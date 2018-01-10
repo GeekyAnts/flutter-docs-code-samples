@@ -138,6 +138,8 @@ for (var key in data) {
   console.log('key', key);
   console.log('value', data[key]);
 }
+```
+```
 // Dart
 var data = { ... };
 for (var key in data.keys) {
@@ -204,7 +206,6 @@ _getIPAddress() async {
 **Note:** Check [here](https://www.dartlang.org/resources/synonyms) for more differences.
 
 
-
 # Learn The Basics
 
 ## What is the equivalent of Hello World program in Flutter?
@@ -221,10 +222,13 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native"; 
 ``` 
 Contrary to React Native way of importing each component as they are used, In Flutter, you import the `material.dart` from the flutter package, which allows you to use any widget without exclusively importing it.
-```import 'package:flutter/material.dart';```
+```
+import 'package:flutter/material.dart';
+```
 Let’s have a look at each of the classes :
- ``` 
- void main() => runApp(new MyApp());
+``` 
+//Flutter
+void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -242,6 +246,7 @@ class MyApp extends StatelessWidget {
 } 
 ```
 ```
+// React Native
 export default class App extends React.Component {
   render() {
     return (
@@ -260,7 +265,7 @@ In Flutter, the execution starts off with the runApp method and the widget/widge
 When writing an app, you will commonly author new widgets that are subclasses of either [StatelessWidget](https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html) or [StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html), depending on whether your widget manages any state. Here, MyApp class extends a StatelessWidget and overrides a build function, which describes the widget in terms of other, lower-level widgets. 
  In the above hello example, the widget tree consists of two widgets, the [Center](https://docs.flutter.io/flutter/widgets/Center-class.html) widget and its child, the [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) widget. The framework forces the root widget to cover the screen, which means the text “Hello World” ends up centered on screen. In simple apps, it is easy to nest widgets but as the code base gets larger and app becomes complex, it is advisable to break deeply nested widgets into functions that returns the widget or smaller classes.
  
-**Note :**  You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/hello-world/rnhelloworld) code.
+**Note:**  You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/hello-world/rnhelloworld) code.
 
 ## How do I create reusable components and use them?
 In React Native, you would create a separate class for reusable component and use that class as a component itself.You would use props to access the passed variables and functions. In the example, we created a custom card class and use it inside parent class.
@@ -287,16 +292,16 @@ class CustomCard extends StatelessWidget {
         ));
   }
 }
-		...
+	...
 new CustomCard(
 	index: index,
     onPress: () {
     	print('Card $index');
 	},
 )    	
-		...
+	...
 ```
-**Note** - You can check the working code in [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js) code. 
+**Note:** You can check the working code in [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js) code. 
 
 # Project Structure & Resources
 
@@ -386,6 +391,7 @@ In React Native, View is a container that supports layout with flexbox, style, t
 
 List is a scrollable list of components arranged linearly. In React Native we use `FlatList` or `ListView` for a performant interface for rendering simple, flat lists.
 ```
+// React Native
 <FlatList
   data={[ ... ]}
   renderItem={({ item }) => <Text>{item.key}</Text>}
@@ -393,6 +399,7 @@ List is a scrollable list of components arranged linearly. In React Native we us
 ```
 In Flutter, [`ListView`](https://docs.flutter.io/flutter/widgets/ListView-class.html) is the most commonly used scrolling widget. The default constructor takes an explicit List of children. It is appropriate for list views with a small number of children. The `ListView.builder` takes an `IndexedWidgetBuilder`, which builds the children on demand. This constructor is appropriate for list views with a large (or infinite) number of children because the builder is called only for those children that are actually visible.
 ```
+// Flutter
 var data = [ ... ];
 new ListView.builder(
 	itemCount: data.length,
@@ -410,6 +417,7 @@ new ListView.builder(
 
 In React Native, no in-built canvas component is present, so we use third party libraries like `react-native-canvas` to use canvas.
 ```
+// React Native
 handleCanvas = canvas => {
 	const ctx = canvas.getContext("2d");
 	ctx.fillStyle = "skyblue";
@@ -428,6 +436,7 @@ render() {
 ```
 In Flutter, we use [`CustomPaint`](https://docs.flutter.io/flutter/widgets/CustomPaint-class.html) widget to draw during the paint phase. We implement abstract class [`CustomPainter`](https://docs.flutter.io/flutter/rendering/CustomPainter-class.html) and pass it to `painter` property in `CustomPaint` widget. 
 ```
+// Flutter
 class MyCanvasPainter extends CustomPainter {
 	@override
 	void paint(Canvas canvas, Size size) {
@@ -465,6 +474,7 @@ class _MyCanvasState extends State<MyCanvas> {
 In React Native, you would normally use the style prop on the view component to specify the flexbox properties to layout the underlying components like this :  
 
 ```
+// React Native
 <View
 	style={{
 		flex: 1,
@@ -479,6 +489,7 @@ The main thing to keep in mind is that unlike web styling, and even React Native
 For example, the [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) or [Row](https://docs.flutter.io/flutter/widgets/Row-class.html) takes an array of children and not any styling properties (only layout properties such as `CrossAxisAlignment` and `direction` among others), while [Container](https://docs.flutter.io/flutter/widgets/Container-class.html) takes a combination of layout and styling properties. You could use a [`Center`](https://docs.flutter.io/flutter/widgets/Center-class.html) widget to center the child widget tree.
 
 ```
+// Flutter
 new Center(
 	child: new Container(
 		child: new Column(
@@ -513,6 +524,7 @@ Another example would be when you need to align your components in a [Row](https
 Use [`Stack`](https://docs.flutter.io/flutter/widgets/Stack-class.html) to arrange widgets on top of a base widget. The widgets can completely or partially overlap the base widget.
 `Stack` is a widget that positions its children relative to the edges of its box. This class is useful if you want to overlap several children in a simple way.
 ```
+// Flutter
 new Stack(
 	alignment: const Alignment(0.6, 0.6),
 	children: [
@@ -539,6 +551,7 @@ The above example uses `Stack` to overlay a Container (that displays its `Text` 
 
 In React Native, we can add style inline as well as use stylesheets.
 ```
+// React Native
 <View style={styles.container}>
 	<Text style={{ fontSize: 32, color: "cyan", fontWeight: "600" }}>
 		This is a sample text
@@ -558,6 +571,7 @@ const styles = StyleSheet.create({
 
 Similarly in Flutter, widgets are highly customizable and layout specific components like [`Padding`](https://docs.flutter.io/flutter/widgets/Padding-class.html), [`Center`](https://docs.flutter.io/flutter/widgets/Center-class.html),[`Card`](https://docs.flutter.io/flutter/material/Card-class.html), [`Stack`](https://docs.flutter.io/flutter/widgets/Stack-class.html) etc. can be used. If you want to use same text style at multiple places, you can use [`TextStyle`](https://docs.flutter.io/flutter/dart-ui/TextStyle-class.html) class and provide it to style property of Text.
 ```
+// Flutter
 var textStyle = new TextStyle(
       fontSize: 32.0, color: Colors.cyan, fontWeight: FontWeight.w600);
 ```
@@ -791,6 +805,7 @@ setState(() {
 In React Native, there are three main built-in navigators if you are using react-navigation-- StackNavigator, TabNavigator and DrawerNavigator. Each of these provide a way to configure and define the screens. From the example, this code snippet shows the definition of each of the navigators :
 
 ```
+// React Native
 const MyApp = TabNavigator(
 	{ Home: { screen: HomeScreen }, Notifications: { screen: tabNavScreen } },
  	{ tabBarOptions: { activeTintColor: "#e91e63", }}
@@ -818,6 +833,7 @@ At first the definition of the routes are provided as a parameter(routes)  to th
  A code snippet from our example is as follows : 
 
 ```
+// Flutter
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -904,6 +920,7 @@ drawer: new Drawer(
 In React Native, we can add various listeners to components using `Touchables` component or using `PanResponder`.
 
 ```
+// React Native
 <TouchableOpacity
 	onPress={() => { console.log("Press"); }}
 	onLongPress={() => { console.log("Long Press"); }}
@@ -915,6 +932,7 @@ In React Native, we can add various listeners to components using `Touchables` c
 In Flutter, First way could be using buttons or touchable widgets which have `onPress` parameters. Another way is wrapping widgets in [`GestureDetector`](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html) widget which  can add event detection to any widget by just pass function in the respective callback.
 
 ```
+// Flutter
 new GestureDetector(
 	child: new Scaffold(
 		appBar: new AppBar(
@@ -951,6 +969,7 @@ Check the [list of all Flutter `GestureDetector` callbacks](https://docs.flutter
 
 React Native provides the Fetch API for networking. You just have to make fetch request and then handle the response to get the data.
 ```
+// React Native
  _getIPAddress = () => {
   fetch("https://httpbin.org/ip")
       .then(response => response.json())
@@ -969,6 +988,7 @@ import 'dart:io';
 The client supports common HTTP operations, such as GET, POST, PUT, DELETE.
 
 ```
+// Flutter
 _getIPAddress() async {
     String url = 'https://httpbin.org/ip';
     var httpClient = createHttpClient();
@@ -988,6 +1008,7 @@ _getIPAddress() async {
 ## How do I use `TextInput` field in Flutter?
 In React Native, typically you would use a `TextInput` component to show a text input box and use the callback to store the value in a variable.
 ```
+// React Native
 <TextInput
 	placeholder="Enter you Password"
 	onChangeText={password => this.setState({ password })}
@@ -996,6 +1017,7 @@ In React Native, typically you would use a `TextInput` component to show a text 
 ```
 In Flutter, we use [`TextEditingController`](https://docs.flutter.io/flutter/widgets/TextEditingController-class.html) to manage the text field. Whenever text field is modified, the text field updates value and the controller notifies its listeners. Listeners can then read the text and selection properties to learn what the user has typed. You can access the input in `TextField` by using `'controller object'.text`
 ```
+// Flutter
 final TextEditingController _controller = new TextEditingController();
 				...
 new TextField(
@@ -1050,6 +1072,7 @@ new Form(
 When building a cross-platform app, you'll want to re-use as much code as possible.Scenarios may arise where it makes sense for the code to be different. In React Native, separate implementation can be given at almost anywhere in the app code by recognizing the platform the app will run on. To get the target platform you need to use this component :
 
 ```
+// React Native
 if (Platform.OS === "ios") {
       return "iOS";
     } else if (Platform.OS === "android") {
@@ -1057,12 +1080,10 @@ if (Platform.OS === "ios") {
     } else {
       return "not recognised";
     }
-
 ```
-
 The same goes in Flutter, 
-
 ```
+// Flutter
 if (Theme.of(context).platform == TargetPlatform.iOS) {
       return "iOS";
     } else if (Theme.of(context).platform == TargetPlatform.android) {
@@ -1072,7 +1093,6 @@ if (Theme.of(context).platform == TargetPlatform.iOS) {
     } else {
       return "not recognised ";
     }
-
 ```
 
 # Debugging
@@ -1089,7 +1109,6 @@ You can also perform full restart by typing `R` in the terminal window.
 In Flutter, [`Dart Observatory`](https://dart-lang.github.io/observatory/) is used which is a tool for profiling and debugging. If you started application using `flutter run`, you can open the Web page at the Observatory URL printed to the console (e.g., `http://127.0.0.1:8100/`). If you are using IntelliJ, you can also debug your application using its built-in debugger.
 Observatory also supports profiling, examining the heap, seeing executed lines of code, debugging memory leaks, debugging memory fragmentation etc. For more information, see [Observatory’s documentation](https://dart-lang.github.io/observatory/).
 **Note:** You can check [here](https://flutter.io/debugging/) for more details on debugging you app.
-
 
 
 # Animations
@@ -1121,11 +1140,11 @@ class FadeInView extends React.Component {
     );
   }
 }
-									...
+		...
 <FadeInView>
 	<Text> Fading in </Text>
 </FadeInView>
-                                    ...
+		...
 ```
 In the equivalent Flutter example, we use AnimationController object `controller` and describe duration inside it. We also use Animation object `animation` where we define it as `CurvedAnimation` which basically describes the animation’s progress as a non-linear curve. We are using this animation inside `FadeInView` widget where we have [`Opacity`](https://docs.flutter.io/flutter/widgets/Opacity-class.html) as separate styling widget inside which we map the current interpolated opacity to widget. Similar to React Native, we define initial and final state but here we use [`Tween`](https://flutter.io/tutorials/animation/#tween) class for it. The sole job of a Tween is to define a mapping from an input range to an output range. Then we start the animation using `controller.forward()`. We can perform other operations too using controller.
 ```
