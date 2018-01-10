@@ -1,11 +1,10 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
-class AnimatedLogo extends AnimatedWidget {
+class FadeInView extends AnimatedWidget {
   static final _opacityTween = new Tween<double>(begin: 0.0, end: 1.0);
-  AnimatedLogo({Key key, Animation<double> animation})
+  FadeInView({Key key, Animation<double> animation})
       : super(key: key, listenable: animation);
-
   Widget build(BuildContext context) {
     final Animation<double> animation = listenable;
     return new Material(
@@ -20,14 +19,13 @@ class AnimatedLogo extends AnimatedWidget {
   }
 }
 
-class LogoApp extends StatefulWidget {
-  _LogoAppState createState() => new _LogoAppState();
+class App extends StatefulWidget {
+  _AppState createState() => new _AppState();
 }
 
-class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
+class _AppState extends State<App> with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
-  static final _opacityTween = new Tween<double>(begin: 0.0, end: 1.0);
   initState() {
     super.initState();
     controller = new AnimationController(
@@ -37,7 +35,7 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
   }
 
   Widget build(BuildContext context) {
-    return new AnimatedLogo(animation: animation);
+    return new FadeInView(animation: animation);
   }
 
   dispose() {
@@ -47,5 +45,5 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
 }
 
 void main() {
-  runApp(new LogoApp());
+  runApp(new App());
 }

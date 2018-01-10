@@ -2,7 +2,24 @@ import React from "react";
 import { StyleSheet, Text, View, FlatList, ScrollView } from "react-native";
 
 export default class App extends React.Component {
+  iter = () => {
+    var dat = [
+      "Devin",
+      "Jackson",
+      "James",
+      "Joel",
+      "John",
+      "Jillian",
+      "Jimmy",
+      "Julie"
+    ];
+    for (var i in dat) {
+      console.log(dat[i]);
+    }
+    // console.log(dat);
+  };
   render() {
+    this.iter();
     return (
       <View style={styles.container}>
         <FlatList

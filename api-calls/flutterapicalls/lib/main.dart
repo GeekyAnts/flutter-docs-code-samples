@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -25,7 +26,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String _ipAddress = 'Unknown';
 
-  _getIPAddress() async {
+  _getIPAddressUsingFuture() {
+    String url = 'https://httpbin.org/ip';
+    var httpClient = createHttpClient();
+    Future response = httpClient.get(url);
+    response.then((value) {
+      setState(() {
+        _ipAddress = JSON.decode(value.body)['origin'];
+      });
+    }).catchError((error) => print(error));
+  }
+
+  _getIPAddressUsingAwait() async {
     String url = 'https://httpbin.org/ip';
     var httpClient = createHttpClient();
     var response = await httpClient.read(url);
@@ -47,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             new Padding(
               padding: new EdgeInsets.all(8.0),
               child: new RaisedButton(
-                onPressed: _getIPAddress,
+                onPressed: _getIPAddressUsingFuture,
                 child: new Text('Get IP address'),
               ),
             ),

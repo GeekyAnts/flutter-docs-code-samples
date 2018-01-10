@@ -8,9 +8,9 @@ export default class App extends React.Component {
       isLoading: true,
       _ipAddress: "Unknown"
     };
+    this._getIPAddressUsingAwait = this._getIPAddressUsingAwait.bind(this);
   }
-
-  _getIPAddress = () => {
+  _getIPAddressUsingPromise = () => {
     return fetch("https://httpbin.org/ip")
       .then(response => response.json())
       .then(responseJson => {
@@ -19,9 +19,13 @@ export default class App extends React.Component {
       .catch(error => {
         console.error(error);
       });
-    cd;
   };
-
+  async _getIPAddressUsingAwait() {
+    const response = await fetch("https://httpbin.org/ip");
+    const json = await response.json();
+    const data = await json.origin;
+    this.setState({ _ipAddress: data });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -29,9 +33,7 @@ export default class App extends React.Component {
         <Text>{this.state._ipAddress}</Text>
         <Button
           title="Get IP Address"
-          onPress={() => {
-            this._getIPAddress();
-          }}
+          onPress={this._getIPAddressUsingAwait.bind(this)}
         />
       </View>
     );
