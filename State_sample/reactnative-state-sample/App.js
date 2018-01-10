@@ -30,12 +30,10 @@ export default class BlinkApp extends Component {
   }
 
   render() {
-    console.log(this.state.ifBlink);
     let display = this.state.showText ? this.state.text : " ";
-
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <StatusBar hidden="true" />
+        <StatusBar hidden={true} />
         <Text>{display} </Text>
         <Button onPress={this.toggleBlinkState} title={this.state.buttonText} />
       </View>
