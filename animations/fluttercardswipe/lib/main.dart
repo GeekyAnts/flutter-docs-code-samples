@@ -8,11 +8,10 @@ List cards = ['Card A', 'Card B', 'Card C', 'Card D'];
 
 class CustomCardItem extends StatefulWidget {
   final String card;
+
   CustomCardItem({this.card});
   @override
-  CustomCardItemState createState() => new CustomCardItemState(
-        card: card,
-      );
+  CustomCardItemState createState() => new CustomCardItemState(card: card);
 }
 
 class CustomCardItemState extends State<CustomCardItem>
@@ -20,6 +19,7 @@ class CustomCardItemState extends State<CustomCardItem>
   AnimationController _controller;
   Animation<Offset> sliderPosition;
   final String card;
+  Offset startoff = new Offset(0.0, 0.0);
   CustomCardItemState({this.card});
   initState() {
     super.initState();
@@ -27,7 +27,7 @@ class CustomCardItemState extends State<CustomCardItem>
         duration: const Duration(milliseconds: 1000), vsync: this);
     sliderPosition = new Tween<Offset>(
       begin: Offset.zero,
-      end: new Offset(1.0, 0.0),
+      end: new Offset(0.0, 0.0),
     )
         .animate(new CurvedAnimation(
       parent: _controller,
@@ -35,13 +35,40 @@ class CustomCardItemState extends State<CustomCardItem>
     ));
   }
 
-  onSwipe(details) {
+  onSwipeUpdate(details) {
+    if (details.globalPosition.dx > 0 &&
+        details.globalPosition.dx > startoff.dx) {
+      sliderPosition = new Tween<Offset>(
+        begin: Offset.zero,
+        end: new Offset(1.0, 0.0),
+      )
+          .animate(new CurvedAnimation(
+        parent: _controller,
+        curve: Curves.decelerate,
+      ));
+    } else {
+      sliderPosition = new Tween<Offset>(
+        begin: Offset.zero,
+        end: new Offset(-1.0, 0.0),
+      )
+          .animate(new CurvedAnimation(
+        parent: _controller,
+        curve: Curves.decelerate,
+      ));
+    }
+  }
+
+  onSwipeEnd(details) {
     setState(() {
       _controller.forward();
       new Timer(const Duration(milliseconds: 1000), () {
         cards.removeLast();
       });
     });
+  }
+
+  onSwipeStart(details) {
+    startoff = details.globalPosition;
   }
 
   @override
@@ -54,7 +81,9 @@ class CustomCardItemState extends State<CustomCardItem>
       child: new SlideTransition(
         position: sliderPosition,
         child: new GestureDetector(
-          onHorizontalDragEnd: onSwipe,
+          onHorizontalDragStart: onSwipeStart,
+          onHorizontalDragEnd: onSwipeEnd,
+          onHorizontalDragUpdate: onSwipeUpdate,
           child: new Container(
             padding: const EdgeInsets.all(8.0),
             height: 280.0,
