@@ -4,14 +4,14 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `/Users/manojn/Documents/flutter_SDK/flutter/bin/cache/artifacts/engine/ios`)
-  - shared_preferences (from `/Users/manojn/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.3.0/ios`)
+  - Flutter (from `/Users/ankurkedia/flutter/bin/cache/artifacts/engine/ios`)
+  - shared_preferences (from `/Users/ankurkedia/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.3.0/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: /Users/manojn/Documents/flutter_SDK/flutter/bin/cache/artifacts/engine/ios
+    :path: /Users/ankurkedia/flutter/bin/cache/artifacts/engine/ios
   shared_preferences:
-    :path: /Users/manojn/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.3.0/ios
+    :path: /Users/ankurkedia/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.3.0/ios
 
 SPEC CHECKSUMS:
   Flutter: d674e78c937094a75ac71dd77e921e840bea3dbf

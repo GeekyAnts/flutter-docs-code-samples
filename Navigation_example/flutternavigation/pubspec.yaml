@@ -1,4 +1,4 @@
-name: flutter_shared_preferences
+name: flutternavigation
 description: A new Flutter project.
 
 dependencies:
@@ -8,9 +8,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.0
-  shared_preferences: "^0.3.0"
-
-
 
 dev_dependencies:
   flutter_test:
@@ -56,5 +53,5 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies,
+  # For details regarding fonts from package dependencies, 
   # see https://flutter.io/custom-fonts/#from-packages
