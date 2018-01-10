@@ -39,9 +39,8 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <TextInput
           style={{
-            height: 40,
+            height: 60,
             width: 200,
-            borderBottomWidth: 1,
             paddingTop: 20,
             paddingBottom: 5
           }}
@@ -50,12 +49,12 @@ export default class App extends React.Component {
         />
         <TextInput
           style={{
-            height: 40,
+            height: 60,
             width: 200,
-            borderBottomWidth: 1,
             paddingTop: 20,
             paddingBottom: 5
           }}
+          secureTextEntry
           placeholder="Enter you Password"
           onChangeText={password => this.setState({ password })}
         />
