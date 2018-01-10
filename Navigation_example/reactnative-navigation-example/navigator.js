@@ -10,7 +10,7 @@ import StackScreen from "./stackScreen";
 import drawerScreen from "./drawerScreen";
 import tabNavScreen from "./tabNavScreen";
 
-const MyApp = TabNavigator(
+const TAbNav = TabNavigator(
   { Home: { screen: HomeScreen }, Notifications: { screen: tabNavScreen } },
   {
     tabBarPosition: "bottom",
@@ -29,11 +29,11 @@ const MyApp = TabNavigator(
 );
 
 const SimpleApp = StackNavigator({
-  Home: { screen: MyApp },
+  Home: { screen: TAbNav },
   stackScreen: { screen: StackScreen }
 });
 
-export default (MyApp1 = DrawerNavigator({
+export default (DrawerNav = DrawerNavigator({
   Home: {
     screen: SimpleApp
   },
