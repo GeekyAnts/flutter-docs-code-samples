@@ -29,7 +29,9 @@ class CustomCardItemState extends State<CustomCardItem> {
       bottom: false,
       child: new Dismissible(
         key: key,
-        resizeDuration: const Duration(milliseconds: 10000),
+        onDismissed: (DismissDirection dir) {
+          cards.removeLast();
+        },
         child: new Container(
           padding: const EdgeInsets.all(8.0),
           height: 280.0,
