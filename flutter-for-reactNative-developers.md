@@ -1,13 +1,18 @@
 # Dart for Javascript developers
+
+## Introduction to Dart
+
+Dart is an object-oriented, class defined, single inheritance language using a C-style syntax that transcompiles optionally into JavaScript. It supports interfaces, mixins, abstract classes, reified generics, optional typing, and a sound type system.It is focused on client-side programming, be it in the browser or on mobile.
+
 ## Entry Point
 
 `main()` is the entry function in Dart. In Javascript, we do not any specific entry function.
 ```
 // JavaScript
 function main() {
-  // To be used as the entry point, but it must be
+  // To be used as the entry point
 }
- // has to be called manually.
+ // but it has to be called manually.
 main();
 ```
 ```
@@ -151,7 +156,7 @@ data.forEach((key, value) {
 ```
 ## Asynchronous Programming
 ### Future
-Like JavaScript, Dart is also single-threaded. In JavaScript, the `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+Like JavaScript, Dart also supports single-threaded execution. In JavaScript, the `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
 ```
 // JavaScript
 _getIPAddress = () => {
@@ -180,7 +185,7 @@ _getIPAddress() {
   }
 ```
 ### async / await
-The async function declaration defines an asynchronous function. In JavaScript, When an async function is called, it returns a Promise. The await operator is used to wait for a Promise.
+The async function declaration defines an asynchronous function. In JavaScript, when an async function is called, it returns a `Promise`. The `await` operator is used to wait for a Promise.
 ```
 // JavaScript
 async _getIPAddress() {
@@ -190,7 +195,7 @@ async _getIPAddress() {
   this.setState({ _ipAddress: data });
 }
 ```
-Whereas in Dart,an async function returns a `Future`, and the body of the function is scheduled for execution later. The await operator is used to wait for a `Future`.
+Whereas in Dart,an async function returns a `Future`, and the body of the function is scheduled for execution later. The `await` operator is used to wait for a `Future`.
 ```
 // Dart
 _getIPAddress() async {
@@ -205,6 +210,36 @@ _getIPAddress() async {
 ```
 **Note:** Check [here](https://www.dartlang.org/resources/synonyms) for more differences.
 
+### Streams
+A stream is a sequence of ongoing events ordered in time. It can emit three different things: a value (of some type), an error, or a "completed" signal. Streams are cheap and ubiquitous, anything can be a stream: variables, user inputs, properties, caches, data structures, etc.
+Consider this example in Javascript,
+```
+function *naturalNumbers() {
+ let n = 1;
+ while (true) {
+   yield n++;
+ }
+}
+const nats = naturalNumbers();
+console.log(nats.next().value) // 1
+console.log(nats.next().value) // 2
+console.log(nats.next().value) // 3
+``` 
+In the above example, We keep track of the current number in the sequence with n. We set n = 1 because naturally (pun intended) the natural numbers start with 1. Then, inside an infinite loop, we yield n and increment it to the next number in the sequence.
+In Dart, Streams can be created in many ways, but they can all be used in the same way: the asynchronous for loop (commonly just called await for) iterates over the events of a stream like the for loop iterates over an Iterable. For example:
+
+```
+Future<int> sumStream(Stream<int> stream) async {
+  var sum = 0;
+  await for (var value in stream) {
+    sum += value;
+  }
+  return sum;
+}
+```
+This code simply receives each event of a stream of integer events, adds them up, and returns (a future of) the sum. When the loop body ends, the function is paused until the next event arrives or the stream is done.
+
+
 
 # Learn The Basics
 
@@ -218,8 +253,9 @@ In Flutter, if you are using terminal, then you use the `flutter run` command in
 
 ## How do I use import statements?
 ```
+//React Native
 import React from "react"; 
-import { StyleSheet, Text, View } from "react-native"; 
+import { StyleSheet, Text, View  } from "react-native"; 
 ``` 
 Contrary to React Native way of importing each component as they are used, In Flutter, you import the `material.dart` from the flutter package, which allows you to use any widget without exclusively importing it.
 ```
@@ -338,7 +374,28 @@ If you have used CRNA, you started writing the code in `App.js`. In Flutter, the
 
 <b>`root/test`</b> - automated test files.
 
-<b>`root/pubspec.yaml`</b> - metadata for the app. Equivalent of `package.json` in React Native
+<b>`root/pubspec.yaml`</b> - metadata for the app. Equivalent of `package.json` in React Native.
+
+## Where do I put my resources(assets) and how do I use them?
+In React Native, to add a static image to your app, place it somewhere in your source code tree and reference it like this :
+```
+<Image source={require('./my-icon.png')} />
+```
+Flutter apps can include both code and assets (sometimes called resources). An asset is a file that is bundled and deployed with your app, and is accessible at runtime. Common types of assets include static data (for example, JSON files), configuration files, icons, and images (JPEG, WebP, GIF, animated WebP/GIF, PNG, BMP, and WBMP).
+All the assets can live under any folder under the root directory, for best practice you can put them under `assets` .
+Flutter uses the pubspec.yaml file, located at the root of your project, to identify assets required by an app.
+```
+flutter:
+  assets:
+    - assets/my_icon.png
+    - assets/background.png
+```
+When an asset’s path is specified in the assets section of pubspec.yaml, the build process looks for any files with the same name in adjacent subdirectories. Such files are then included in the asset bundle along with the specified asset.
+ It is used like this in the app code, 
+```
+image: new AssetImage(assets/background.png'),
+```
+
 
 ## What are the standard practices to structure your mobile app?
 
@@ -486,7 +543,7 @@ In React Native, you would normally use the style prop on the view component to 
 ``` 
 The main thing to keep in mind is that unlike web styling, and even React Native styling where View’s perform all layout, layout is determined by a combination of the type of Widget you choose and its layout & styling properties. In Flutter, everything is a widget even the ones required to layout the underlying widgets.
 
-For example, the [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) or [Row](https://docs.flutter.io/flutter/widgets/Row-class.html) takes an array of children and not any styling properties (only layout properties such as `CrossAxisAlignment` and `direction` among others), while [Container](https://docs.flutter.io/flutter/widgets/Container-class.html) takes a combination of layout and styling properties. You could use a [`Center`](https://docs.flutter.io/flutter/widgets/Center-class.html) widget to center the child widget tree.
+For example, the [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) or [Row](https://docs.flutter.io/flutter/widgets/Row-class.html) takes an array of children and not styling properties (only layout properties such as `CrossAxisAlignment` and `direction` among others), while [Container](https://docs.flutter.io/flutter/widgets/Container-class.html) takes a combination of layout and styling properties. You can use a [`Center`](https://docs.flutter.io/flutter/widgets/Center-class.html) widget to center the child widget tree.
 
 ```
 // Flutter
@@ -522,7 +579,7 @@ Another example would be when you need to align your components in a [Row](https
 
 ## How do I overlap several widgets on top of one another? 
 Use [`Stack`](https://docs.flutter.io/flutter/widgets/Stack-class.html) to arrange widgets on top of a base widget. The widgets can completely or partially overlap the base widget.
-`Stack` is a widget that positions its children relative to the edges of its box. This class is useful if you want to overlap several children in a simple way.
+`Stack` positions its children relative to the edges of its box. This class is useful if you want to overlap several children in a simple way.
 ```
 // Flutter
 new Stack(
@@ -549,7 +606,7 @@ The above example uses `Stack` to overlay a Container (that displays its `Text` 
 
 ## How to custom style my components in Flutter?
 
-In React Native, we can add style inline as well as use stylesheets.
+In React Native, we can use inline styling as well as use stylesheets.
 ```
 // React Native
 <View style={styles.container}>
@@ -632,7 +689,8 @@ class MyApp extends StatelessWidget {
 
 ## What are Stateful and Stateless widgets and how do I use them?
 A stateless widget has no internal state to manage. Icon, IconButton, and Text are examples of stateless widgets, which subclass StatelessWidget.
-Stateless widget are useful when the part of the user interface you are describing does not depend on anything other than the configuration information in the object itself and the BuildContext in which the widget is inflated.
+
+Stateless widgets are useful when the part of the user interface you are describing does not depend on anything other than the configuration information in the object itself and the BuildContext in which the widget is inflated.
 ```
 class MyApp extends StatelessWidget {
 	@override
@@ -644,8 +702,9 @@ class MyApp extends StatelessWidget {
 }
 ```
 The build method of a stateless widget is typically only called in three situations: the first time the widget is inserted in the tree, when the widget's parent changes its configuration, and when an InheritedWidget it depends on changes. A `MyHomePage` stateful widget can be given as the child to a Stateless widget as shown above. 
+
 A stateful widget is dynamic. The user can interact with a stateful widget (by typing into a form, or moving a slider, for example), or it changes over time (perhaps a data feed causes the UI to update). Checkbox, Radio, Slider, InkWell, Form, and TextField are examples of stateful widgets, which subclass `StatefulWidget`. 
-State is information that can be read synchronously when the widget is built and might change during the lifetime of the widget. It is the responsibility of the widget implementer to ensure that the State is promptly notified when such state changes, using State.setState.Stateful widget are useful when the part of the user interface you are describing can change dynamically. 
+State is information that can be read synchronously when the widget is built and might change during the lifetime of the widget. It is the responsibility of the widget implementer to ensure that the State is promptly notified when such state changes, using `Stateful` widget is useful when the part of the user interface you are describing can change dynamically. 
 The code snippet below shows how to define a stateful widget and use `createState` to create a state of the MyHomePage widget.
 ```
 class MyHomePage extends StatefulWidget {
@@ -707,18 +766,20 @@ Some widgets are Stateful, and some are Stateless.
 If a widget changes—the user interacts with it, it’s Stateful otherwise it can be Stateless.
 Stateful widget are useful when the part of the user interface you are describing can change dynamically. 
 
-### If using Stateful widget, Decide which object manages the widget’s state
+### If using Stateful widget, decide which object manages the widget’s state
 There are three main ways to manage state:
 	1. The widget manages its own state
 	2. The parent manages the widget’s state
 	3. A mix-and-match approach
 
 ### How do you decide which approach to use? The following principles should help you decide:
+
 	1. If the state in question is user data, for example the checked or unchecked mode of a checkbox, or the position of a slider, then the state is best managed by the parent widget.
 	2. If the state in question is aesthetic, for example an animation, then the state is best managed by the widget itself.
 	If in doubt, start by managing state in the parent widget.
 
 ### Subclass StatefulWidget and State
+
 The `MyHomePage` class manages its own state, so it overrides `createState()` to create the State object. The framework calls `createState()` when it wants to build the widget. In this example, `createState()` creates an instance of `_MyHomePageState` , which is implemented in the next step.
 
 ```
@@ -826,7 +887,7 @@ export default (MyApp1 = DrawerNavigator({
 })
 );
 ```
-In Flutter, there are two main concepts to understand-- A [Route](https://docs.flutter.io/flutter/widgets/Route-class.html) is an abstraction for a “screen” or “page” of an app, and a [Navigator](https://docs.flutter.io/flutter/widgets/Navigator-class.html) is a widget that manages routes.
+In Flutter, there are two main concepts to understand-- A [Route](https://docs.flutter.io/flutter/widgets/Route-class.html) is an abstraction for a “screen” or “page” of an app, and a [Navigator](https://docs.flutter.io/flutter/widgets/Navigator-class.html) which is a widget that manages routes.
 A `Navigator` is defined as a widget that manages a set of child widgets with a stack discipline.The navigator manages a stack of `Route` objects and provides methods for managing the stack, like [`Navigator.push`](https://docs.flutter.io/flutter/widgets/Navigator/push.html) and [`Navigator.pop`](https://docs.flutter.io/flutter/widgets/Navigator/pop.html).
 
 At first the definition of the routes are provided as a parameter(routes)  to the [`MaterialApp`](https://docs.flutter.io/flutter/material/MaterialApp-class.html) widget.
@@ -929,7 +990,7 @@ In React Native, we can add various listeners to components using `Touchables` c
 </TouchableOpacity>
 ```
 
-In Flutter, First way could be using buttons or touchable widgets which have `onPress` parameters. Another way is wrapping widgets in [`GestureDetector`](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html) widget which  can add event detection to any widget by just pass function in the respective callback.
+In Flutter, First way could be using buttons or touchable widgets which have `onPress` parameters. Another way is wrapping widgets in [`GestureDetector`](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html) widget which  can add event detection to any widget by just passing the function in the respective callback.
 
 ```
 // Flutter
@@ -1105,8 +1166,8 @@ In React Native, the shortcut is ⌘R for the iOS Simulator and tapping R twice 
 In Flutter, If you are using IntelliJ IDE, you can select Save All (cmd-s/ctrl-s), or click the Hot Reload button on the toolbar.
 If you are running the app at the command line using flutter run, type `r` in the terminal window. 
 You can also perform full restart by typing `R` in the terminal window.
-## Is there something like Chrome Developer Tools in Flutter?
-In Flutter, [`Dart Observatory`](https://dart-lang.github.io/observatory/) is used which is a tool for profiling and debugging. If you started application using `flutter run`, you can open the Web page at the Observatory URL printed to the console (e.g., `http://127.0.0.1:8100/`). If you are using IntelliJ, you can also debug your application using its built-in debugger.
+## Is there anything like Chrome Developer Tools in Flutter?
+In Flutter, [`Dart Observatory`](https://dart-lang.github.io/observatory/) is used which is a tool for profiling and debugging. If you have started your application using `flutter run`, you can open the Web page at the Observatory URL printed to the console (e.g., `http://127.0.0.1:8100/`). If you are using IntelliJ, you can also debug your application using its built-in debugger.
 Observatory also supports profiling, examining the heap, seeing executed lines of code, debugging memory leaks, debugging memory fragmentation etc. For more information, see [Observatory’s documentation](https://dart-lang.github.io/observatory/).
 **Note:** You can check [here](https://flutter.io/debugging/) for more details on debugging you app.
 
@@ -1185,3 +1246,19 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
 }
 ```
 **Note:** Check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/flutterfade/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/rnfade/App.js).
+
+## How do I add swipe animation to Cards?
+In React Native, you either use PanResponder or third-party libraries for swipe animation. In Flutter, we can achieve this animation by using [`Dismissible`](https://docs.flutter.io/flutter/widgets/Dismissible-class.html) widget and nest the child widgets.
+```
+child: new Dismissible(
+	key: key,
+    onDismissed: (DismissDirection dir) {
+    	cards.removeLast();
+	},
+    child: new Container(
+		... 
+	),
+),
+```
+**Note:** You can check the working code [here](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/animations/fluttercardswipe).
+
