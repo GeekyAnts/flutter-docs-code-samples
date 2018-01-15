@@ -11,7 +11,7 @@ class FadeInView extends AnimatedWidget {
         child: new Center(
       child: new Opacity(
         opacity: _opacityTween.evaluate(animation),
-        child: new Text("Fadding in",
+        child: new Text("Fading in",
             textDirection: TextDirection.ltr,
             style: new TextStyle(fontSize: 28.0)),
       ),
