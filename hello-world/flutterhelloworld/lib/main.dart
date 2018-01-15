@@ -11,13 +11,8 @@ class MyApp extends StatelessWidget {
         title: new Text("Flutter"),
       ),
       body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              'Hello World',
-            ),
-          ],
+        child: new Text(
+          'Hello World',
         ),
       ),
     ));
