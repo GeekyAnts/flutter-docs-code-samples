@@ -1345,8 +1345,9 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 }
 ```
+#### Preview
+![Fade In Animation](./animations/flutterfade/screenshot/fade-in.gif)
 
-[Fade In Animation]('./animations/flutterfade/screenshot/fade-in.gif')
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/flutterfade/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/rnfade/App.js).
 
 ## How do I add swipe animation to Cards?
@@ -1364,6 +1365,7 @@ child: new Dismissible(
   ),
 ),
 ```
+#### Preview
+![Card Swipe using Dismissible](./animations/fluttercardswipe/screenshot/cardswipe.gif)
 
-[Card Swipe using Dismissible]('./animations/fluttercardswipe/screenshot/cardswipe.gif)
 **Note:** You can check the working code [here](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/animations/fluttercardswipe).
