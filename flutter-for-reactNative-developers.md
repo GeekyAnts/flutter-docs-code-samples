@@ -1,15 +1,19 @@
-# Dart for Javascript developers
+# Flutter for React Native Developers
+
+This document is meant for React Native developers looking to apply their existing React Native knowledge to build mobile apps with Flutter. If you understand the fundamentals of the React Native framework, then you can use this document as a jump start to Flutter development.
+
+## A Brief Introduction to Dart for JavaScript Developers
 
 Dart is an open-source, scalable programming language, for building web, server, and mobile apps. It is an object-oriented, class defined, single inheritance language that uses a C-style syntax that transcompiles optionally into JavaScript. It supports interfaces, abstract classes, optional typing, and a sound type system.
 
-## Entry Point
+### Entry Point
 
 While JavaScript doesn't have any specific entry function, Dart does have an entry function called `main()`.
 
 ```javascript
 // JavaScript
 function main() {
-  // To be used as the entry point
+  // Can be used as entry point
 }
 // but it has to be called manually.
 main();
@@ -21,9 +25,9 @@ main() {
 }
 ```
 
-## Printing to the console
+### Printing to the console
 
-Printing data to the console can also help in improving the debugging purpose.
+Printing data to the console can be done in the following way.
 
 ```javascript
 // JavaScript
@@ -35,9 +39,9 @@ console.log("Level completed.");
 print('Hello World');
 ```
 
-## Variables
+### Variables
 
-### Creating and Assigning Variables
+#### Creating and Assigning Variables
 
 While JavaScript variables cannot be typed, Dart variables can be typed (but don't need to be).
 
@@ -50,9 +54,10 @@ var name = "JavaScript";
 // Dart
 String name = 'dart';
 var otherName = 'Dart';
+// Both are acceptable in Dart.
 ```
 
-### Default value
+#### Default value
 
 In Dart, uninitialized variables have an initial value of `null`. Even variables with numeric types are initially null because numbers are objects in Dart. But in JavaScript, variables are `undefined`.
 
@@ -67,38 +72,7 @@ var name; // == null
 int x; // == null
 ```
 
-### Hoisting
-
-Unlike JavaScript which hoists variables to the top of their scope, Dart does not hoist its variables at all.
-
-```javascript
-// JavaScript
-function printName() {
-  console.log("Hello, " + name);
-  var name = "Bob";
-}
-printName(); // Hello, undefined
-function printName() {
-  var name;
-  console.log("Hello, " + name);
-  name = "Bob";
-}
-printName(); // Hello, undefined
-```
-
-```dart
-// Dart
-printName() {
-  print('Hello, $name');
-  var name = 'dart';
-} // compilation error here
-printName() {
-  var name = 'dart';
-  print('Hello, $name');
-} // Hello, dart
-```
-
-## Checking for null/zero
+### Checking for null/zero
 
 In Dart, only the boolean value true is treated as true. But in JavaScript, values like 1 or any other non-null objects are treated as true.
 
@@ -126,9 +100,9 @@ if (zero == 0) {
 }
 ```
 
-## Functions
+### Functions
 
-For the most part, Dart and JavaScript functions share many similarities. The only thing that's different in Dart and JavaScript functions is the declaration.
+For the most part, Dart and JavaScript functions are similar. The only thing that's different in Dart and JavaScript functions is the declaration.
 
 ```javascript
 //JavaScript
@@ -148,33 +122,9 @@ bool fn() {
 }
 ```
 
-## Iterators
+### Asynchronous Programming
 
-The `for` loops are exactly the same in Dart and JavaScript. But there is a difference when it comes to `for-in` loops. In Dart, the `for-in` loops return the elements of the list and not the index.
-
-```javascript
-// JavaScript
-var data = { ... };
-for (var key in data) {
-  console.log('key', key);
-  console.log('value', data[key]);
-}
-```
-
-```dart
-// Dart
-var data = { ... };
-for (var key in data.keys) {
-  print('$key, ${data[key]}');
-}
-data.forEach((key, value) {
-  print('${key}, ${value}');
-});
-```
-
-## Asynchronous Programming
-
-### Future
+#### Future
 
 Like JavaScript, Dart supports single-threaded execution. In JavaScript, the `Promise` object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
 
@@ -208,7 +158,7 @@ _getIPAddress() {
 }
 ```
 
-### async / await
+#### async / await
 
 The async function declaration defines an asynchronous function. In JavaScript, when an async function is called, it returns a `Promise`. The `await` operator is used to wait for a `Promise`.
 
@@ -237,7 +187,7 @@ _getIPAddress() async {
 }
 ```
 
-### Streams
+#### Streams
 
 A stream is a sequence of ongoing events that are ordered in time. It can emit three different things:
 
@@ -277,18 +227,18 @@ This code simply receives each event of a stream of integer events, adds them up
 
 **Note:** You can refer [here](https://www.dartlang.org/resources/synonyms) for more differences.
 
-# Learn The Basics
+## Learn The Basics
 
-## What is the equivalent of Hello World program in Flutter?
+### What is the equivalent of Hello World program in Flutter?
 
 In React Native, you would start off your development process by creating the project using `create-react-native-app {project-name}` command line tool. In [Flutter](https://flutter.io/getting-started/), you can use `flutter create {project name}` command line tool to do the same.
 
-## How do I run my app?
+### How do I run my app?
 
 In React Native, you would go to the project directory and use `npm run ios/android` or `yarn run ios/android`.
-In Flutter, if you are using command terminal, then you use the `flutter run` command in the project root directory to run your app on a connected device or simulator. If you are using IntelliJ IDE, then you can just press the run icon in the toolbar of the project.
+In Flutter, if you are using the terminal, then you use the `flutter run` command in the project root directory to run your app on a connected device or simulator. If you are using IntelliJ IDE, then you can just press the run icon in the toolbar of the project.
 
-## How do I use import statements?
+### How do I use import statements?
 
 ```javascript
 //React Native
@@ -333,14 +283,14 @@ export default class App extends React.Component {
 The `App` class in React Native extends `React.Component` and implements the render method by returning a view component as shown.
 In Flutter, the execution starts off with the `runApp()` and the widget/widget tree is passed as the parameter.
 
-## How do I use Widgets and nest them to form a Widget tree?
+### How do I use Widgets and nest them to form a Widget tree?
 
 When writing an app, you will commonly author new widgets that are subclasses of either [StatelessWidget](https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html) or [StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html), depending on whether your widget manages any state. In the above Hello World example, MyApp class extends a StatelessWidget and overrides a build function which describes the widget in terms of other, lower-level widgets.
 In the above example, the widget tree consists of three widgets, the [Center](https://docs.flutter.io/flutter/widgets/Center-class.html), [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) and the [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) widget. The framework forces the root widget to cover the screen, which means the text “Hello World” ends up centered on the screen. In simple apps, it is easy to nest widgets but as the code base gets larger and the app becomes complex, it is advisable to break deeply nested widgets into functions that return the widget or smaller classes.
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/hello-world/rnhelloworld) code.
 
-## How do I create reusable components and use them?
+### How do I create reusable components and use them?
 
 In React Native, you would create a separate class for reusable component and use that class as a component.You would then use props to access the passed variables and functions. In the example, we create a custom card class and used it inside parent class.
 Similarly, in Flutter, you just create a class for custom widgets and use it as you would use a normal widget.
@@ -380,13 +330,13 @@ new CustomCard(
 
 **Note:** You can check the working code in [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js) code.
 
-# Project Structure & Resources
+## Project Structure & Resources
 
-## Where do I start writing the code?
+### Where do I start writing the code?
 
-If you have used CRNA (create-react-native-app), then you have written your code inside `App.js`. In Flutter, the entry file is `’project root’/lib/main.dart` and execution starts from the main function. The minimal Flutter app simply calls the `runApp` function with a widget. The `runApp` function takes the given Widget and makes it the root of the widget tree. Any widget can be passed to it. But, if you are creating an app that uses material design, you can use [MaterialApp](https://docs.flutter.io/flutter/material/MaterialApp-class.html) class as root and define a theme that can be accessed across the app. If you are creating a screen, then you can use `Scaffold`. [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) is regularly used for creating screen. But it is not mandatory.
+If you have used CRNA (create-react-native-app), then you have written your code inside `App.js`. In Flutter, the entry file is `’project root’/lib/main.dart` and execution starts from the main function. The minimal Flutter app simply calls the `runApp` function with a widget. The `runApp` function takes the given Widget and makes it the root of the widget tree. Any widget can be passed to it. But, if you are creating an app that uses material design, you can use [MaterialApp](https://docs.flutter.io/flutter/material/MaterialApp-class.html) class as root and define a theme that can be accessed across the app. If you are creating a screen, then you can use [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html). But it is not mandatory.
 
-## How are files structured in a Flutter app?
+### How are files structured in a Flutter app?
 
 <pre>
 ┬
@@ -416,7 +366,7 @@ If you have used CRNA (create-react-native-app), then you have written your code
 
 <b>`root/pubspec.yaml`</b> - metadata for the app. Equivalent of `package.json` in React Native.
 
-## Where do I put my resources(assets) and how do I use them?
+### Where do I put my resources(assets) and how do I use them?
 
 In React Native, to add a static image to your app, place it somewhere in your source code tree and reference it like this :
 
@@ -443,7 +393,7 @@ It is used like this in the app code,
 image: new AssetImage(assets/background.png'),
 ```
 
-## What are the standard practices to structure your mobile app?
+### What are the standard practices to structure your mobile app?
 
 To better structure your app, all the source files go into `/lib`.
 
@@ -473,7 +423,7 @@ To better structure your app, all the source files go into `/lib`.
 
 <b>`lib/main.dart`</b> - entry point the app.
 
-## How do I install plugins/packages?
+### How do I install plugins/packages?
 
 In Flutter, `flutter packages get` is equivalent of `yarn add {package-name}` / `npm install {package-name}`. To install package in flutter follow these steps:
 
@@ -483,15 +433,15 @@ In Flutter, `flutter packages get` is equivalent of `yarn add {package-name}` / 
 
 You can find the Flutter packages [here](https://pub.dartlang.org/flutter/packages) and compare them based on their scores.
 
-# Views
+## Views
 
-## What is the equivalent of a `View` in Flutter?
+### What is the equivalent of a `View` in Flutter?
 
 In React Native, View is a container that supports layout with flexbox, style, touch handling, and accessibility controls. In Flutter, we have layout specific widgets like [Container](https://docs.flutter.io/flutter/widgets/Container-class.html), [Column](https://docs.flutter.io/flutter/widgets/Column-class.html), [Row](https://docs.flutter.io/flutter/widgets/Row-class.html), [Center](https://docs.flutter.io/flutter/widgets/Center-class.html) etc. You can also use [Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html) which provides options for showing drawers, snack bars, and bottom sheets.
 
 **Note:** You can also check the layout widget catalog [here](https://flutter.io/widgets/layout/).
 
-## What is the equivalent of `FlatList` / `ListView`?
+### What is the equivalent of `FlatList` / `ListView`?
 
 List is a scrollable list of components arranged linearly. In React Native we use `FlatList` or `ListView` for a performant interface for rendering simple, flat lists.
 
@@ -520,7 +470,7 @@ new ListView.builder(
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/flutterscrollable/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/rnscrollable/App.js) code.
 
-## How do I use a Canvas to draw/paint?
+### How do I use a Canvas to draw/paint?
 
 In React Native, no in-built canvas component is present, so we use third party libraries like `react-native-canvas` to use canvas.
 
@@ -576,9 +526,9 @@ class _MyCanvasState extends State<MyCanvas> {
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/flutterscrollable/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/rnscrollable/App.js) code.
 
-# Layouts
+## Layouts
 
-## How do I layout my Widgets?
+### How do I layout my Widgets?
 
 In React Native, you would normally use the style prop on the view component to specify the flexbox properties to layout the underlying components like this :
 
@@ -594,7 +544,7 @@ In React Native, you would normally use the style prop on the view component to 
 >
 ```
 
-The main thing to keep in mind is that unlike web styling, and even React Native styling where View’s perform all layouting, layout in Flutter is determined by a combination of the type of Widget you choose and its layout and styling properties.
+In Flutter, layout is determined by a combination of the type of Widget that you choose and its layout and style properties.
 
 For example, the [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) or [Row](https://docs.flutter.io/flutter/widgets/Row-class.html) takes an array of children and not styling properties (only layout properties such as `CrossAxisAlignment` and `direction` among others), while [Container](https://docs.flutter.io/flutter/widgets/Container-class.html) takes a combination of layout and styling properties. You can use a [`Center`](https://docs.flutter.io/flutter/widgets/Center-class.html) widget to center the child widget tree.
 
@@ -630,7 +580,7 @@ Another example would be when you need to align your components in a [Row](https
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/flutter-basic-layout-code/basiclayout_sample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/rn-simple-layout) code.
 
-## How do I overlap several widgets on top of one another?
+### How do I overlap several widgets on top of one another?
 
 Use [`Stack`](https://docs.flutter.io/flutter/widgets/Stack-class.html) to arrange widgets on top of a base widget. The widgets can completely or partially overlap the base widget.
 `Stack` positions its children relative to the edges of its box. This class is useful if you want to overlap several children in a simple way.
@@ -657,9 +607,9 @@ new Stack(
 
 The above example uses `Stack` to overlay a Container (that displays its `Text` on a translucent black background) on top of a `CircleAvatar`. The Stack offsets the text using the alignment property and Alignments.
 
-# Styling
+## Styling
 
-## How to custom style my components in Flutter?
+### How to custom style my components in Flutter?
 
 In React Native, we can use inline styling as well as `stylesheets.create`.
 
@@ -711,7 +661,7 @@ new Center(
 
 **Note:** : You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/flutterstyling/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/rnstyling/App.js) code.
 
-## How to use `Icons` and `Colors` in Flutter?
+### How to use `Icons` and `Colors` in Flutter?
 
 There is no in-built support for icons in React Native, so third party libraries have to be used.
 
@@ -723,7 +673,7 @@ For Colors, [`Colors`](https://docs.flutter.io/flutter/material/Colors-class.htm
 new Icon(Icons.lightbulb_outline, color: Colors.redAccent)
 ```
 
-## How to add style themes in Flutter?
+### How to add style themes in Flutter?
 
 In React Native, we define common themes for components in stylesheets and use it in components.
 
@@ -744,10 +694,25 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-# State Management
+## State Management
 
-## What are Stateful and Stateless widgets and how do I use them?
+### What are Stateful and Stateless widgets and how do I use them?
 
+In React Native, we do not have state-specific components, you can call `setState` in any component provided it manages that state. In Flutter, we have Stateful and Stateless widgets where you can use `setState` only in Stateful widgets.
+
+```javascript
+// React Native
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { blink: true };
+  }
+  toggleBlinkState() {
+    this.setState({blink: !this.state.blink});
+  }
+      ...
+}
+```
 A widget which has no internal state to manage is a Stateless widget. Icons, IconButton, and Text are examples of stateless widgets, which subclass StatelessWidget.
 
 Stateless widgets are useful when the part of the user interface you are describing does not depend on anything other than the configuration information in the object itself and the [`BuildContext`](https://docs.flutter.io/flutter/widgets/BuildContext-class.html) in which the widget is inflated.
@@ -827,22 +792,23 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-## What are some of the best practices while using Stateful and Stateless widgets?
+### What are some of the best practices while using Stateful and Stateless widgets?
 
-### • Figure out which widget must be Stateful and Stateless?
+#### • Figure out which widget must be Stateful and Stateless?
 
 Some widgets are Stateful, and some are Stateless.
 If a widget changes—the user interacts with it, it’s Stateful otherwise it can be Stateless.
 Stateful widgets are useful when the part of the user interface you are describing can change dynamically.
 
-### • If using Stateful widget, decide which object manages the widget’s state
+#### • If using Stateful widget, decide which object manages the widget’s state
 
 There are three main ways to manage state:
 
 * The widget manages its own state.
 * The parent manages the widget’s state.
 * A mix-and-match approach
-  #### How do you decide which approach to use? The following principles should help you decide:
+  
+#### • How do you decide which approach to use? The following principles should help you decide:
 * If the state in question is user data: The checked or unchecked mode of a checkbox, or the position of a slider, then the state is best managed by the parent widget.
 * If the state in question is aesthetic: then the state is best managed by the widget itself.
 * When in doubt, let the parent widget manage the child widget's state.
@@ -863,7 +829,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-### • Plug the stateful widget into the widget tree
+#### • Plug the stateful widget into the widget tree
 
 Add your custom stateful widget to the widget tree in the app’s build method.
 
@@ -885,14 +851,14 @@ class MyApp extends StatelessWidget {
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/flutter_basic_statesample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/reactnative-state-sample) code.
 
-## Props
+### Props
 
-In React Native, most components can be customized when they are created, with different parameters. These creation parameters are called props. These parameters can be used in child component using `this.props`.
+In React Native, most components can be customized when they are created with different parameters. These creation parameters are called props. These parameters can be used in child component using `this.props`.
 In Flutter, you would just assign a local variable or function marked `final` with the prop received in the parameterised constructor and use it in the subsequent code.
 
-## Local Storage
+### Local Storage
 
-### How do I store persistent key-value pairs that are global to the app in Flutter?
+#### How do I store persistent key-value pairs that are global to the app in Flutter?
 
 In React Native, you would use the `setItem` and `getItem` functions of the `AsyncStorage` component to store and retrieve data that is persistent and global to the whole app.
 
@@ -932,9 +898,9 @@ setState(() {
 });
 ```
 
-# Routing
+## Routing
 
-## How do I navigate between screens in Flutter?
+### How do I navigate between screens in Flutter?
 
 In React Native, there are three main built-in navigators, if you are using react-navigation-- StackNavigator, TabNavigator, and DrawerNavigator. Each of these provides a way to configure and define the screens. From the example, this code snippet shows the definition of each of the navigators :
 
@@ -963,7 +929,7 @@ export default (MyApp1 = DrawerNavigator({
 In Flutter, there are two main concepts to understand-- A [Route](https://docs.flutter.io/flutter/widgets/Route-class.html) is an abstraction for a “screen” or “page” of an app, and a [Navigator](https://docs.flutter.io/flutter/widgets/Navigator-class.html) which is a widget that manages routes.
 A `Navigator` is defined as a widget that manages a set of child widgets with a stack discipline.The navigator manages a stack of `Route` objects and provides methods for managing the stack, like [`Navigator.push`](https://docs.flutter.io/flutter/widgets/Navigator/push.html) and [`Navigator.pop`](https://docs.flutter.io/flutter/widgets/Navigator/pop.html).
 
-At first the definition of the routes is provided as a parameter(routes) to the [`MaterialApp`](https://docs.flutter.io/flutter/material/MaterialApp-class.html) widget.
+Initially, the definition of the routes is provided as a parameter(routes) to the [`MaterialApp`](https://docs.flutter.io/flutter/material/MaterialApp-class.html) widget.
 A code snippet from our example is as follows :
 
 ```dart
@@ -990,13 +956,13 @@ To navigate to named route :
 Navigator.of(context).pushNamed('/a');
 ```
 
-## How do I use Tab Navigation and Drawer Navigation in Flutter?
+### How do I use Tab Navigation and Drawer Navigation in Flutter?
 
 In React Native, you would define a Tab and Drawer navigators and use them in your class to show tabs and drawers and navigate.
 
 In Flutter, we use [`drawer`](https://docs.flutter.io/flutter/material/Drawer-class.html) and [`bottomNavigationBar`](https://docs.flutter.io/flutter/material/TabBar-class.html) parameters of the [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) to achieve the same.
 
-### Tab Navigation
+#### Tab Navigation
 
 In order to use Tab navigation, we need to use two widgets-- TabBar and TabBarView.
 A TabBar Widget is used to create a TabBar and Tab widgets are passed as children to the TabBar widget as shown below :
@@ -1032,7 +998,7 @@ body: new TabBarView(
 )
 ```
 
-### Drawer navigation
+#### Drawer navigation
 
 A Drawer is simply called upon when a Drawer widget is passed along the drawer parameter to the `Scaffold` widget. You can provide a [`Button`](https://docs.flutter.io/flutter/material/RaisedButton-class.html), a [`Text`](https://docs.flutter.io/flutter/widgets/Text-class.html) widget or a List of items to display as the child to the Drawer widget. In our example here, we have used a [`ListTile`](https://docs.flutter.io/flutter/material/ListTile-class.html) widget and provided navigation on tap.
 
@@ -1051,9 +1017,9 @@ drawer: new Drawer(
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/flutter_navigation) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/reactnative-navigation-example) code.
 
-# Gesture Detection and Touch Event Handling
+## Gesture Detection and Touch Event Handling
 
-## How do I add an click/press listeners to a widget in Flutter?
+### How do I add an click/press listeners to a widget in Flutter?
 
 In React Native, we can add various listeners to components using `Touchables` component or use `PanResponder`.
 
@@ -1071,7 +1037,7 @@ In React Native, we can add various listeners to components using `Touchables` c
 </TouchableOpacity>
 ```
 
-In Flutter, first way could be using buttons or touchable widgets which have `onPress` parameters. Another way is wrapping widgets in [`GestureDetector`](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html) widget which can add event detection to any widget by just passing the function in the respective callback.
+In Flutter, one way to achieve this is using buttons or touchable widgets which have `onPress` parameters. Another way is by wrapping widgets in [`GestureDetector`](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html) widget which can add event detection to any widget by just passing the function in the respective callback.
 
 ```dart
 // Flutter
@@ -1106,9 +1072,9 @@ You can check the list of all Flutter `GestureDetector` callbacks [here](https:/
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/fluttergestures/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/rngestures/App.js) code.
 
-# Making HTTP Networking Requests
+## Making HTTP Networking Requests
 
-## How do I fetch data from API calls?
+### How do I fetch data from API calls?
 
 React Native provides the Fetch API for networking. You just have to make a fetch request and then handle the response to get the data.
 
@@ -1132,7 +1098,7 @@ Similar flow is followed in Flutter but it uses the [`dart:io`](https://docs.flu
 import 'dart:io';
 ```
 
-The client supports common HTTP operations, such as GET, POST, PUT, DELETE.
+The client supports HTTP operations, such as GET, POST, PUT, DELETE.
 
 ```dart
 // Flutter
@@ -1149,9 +1115,9 @@ _getIPAddress() async {
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/flutterapicalls/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/rnapicalls/App.js) code.
 
-# Form Input
+## Form Input
 
-## How do I use `TextInput` field in Flutter?
+### How do I use `TextInput` field in Flutter?
 
 In React Native, typically you would use a `TextInput` component to show a text input box and use the callback to store the value in a variable.
 
@@ -1191,9 +1157,9 @@ new RaisedButton(
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/flutterinputfields/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/rninputfields/App.js)
 
-## How do I use `Forms` in Flutter?
+### How do I use `Forms` in Flutter?
 
-In the Flutter land, we use [`Form`](https://docs.flutter.io/flutter/widgets/Form-class.html) widget, where [`TextFormField`](https://docs.flutter.io/flutter/material/TextFormField-class.html) widgets along with the submit button are passed as children. The `TextFormField` widget has a parameter called [`onSaved`](https://docs.flutter.io/flutter/widgets/FormField/onSaved.html) which takes a callback and executes when the form is saved.
+In Flutter, we use [`Form`](https://docs.flutter.io/flutter/widgets/Form-class.html) widget, where [`TextFormField`](https://docs.flutter.io/flutter/material/TextFormField-class.html) widgets along with the submit button are passed as children. The `TextFormField` widget has a parameter called [`onSaved`](https://docs.flutter.io/flutter/widgets/FormField/onSaved.html) which takes a callback and executes when the form is saved.
 The process is to call methods on FormState to save, reset, or validate each FormField that is a descendant of this Form. To obtain the `FormState`, you may use `Form.of` with a context whose ancestor is the Form, or pass a `GlobalKey` to the Form constructor and call `GlobalKey.currentState`.
 
 ```dart
@@ -1219,9 +1185,9 @@ new Form(
 
 **Note:** You can check out the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/flutterinputfields/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/rninputfields/App.js)
 
-# Platform-specific code
+## Platform-specific code
 
-When building a cross-platform app, you'll want to re-use as much code as possible. Scenarios may arise where it makes sense for the code to be different. In React Native, separate implementation can be given at almost anywhere in the app code by recognizing the platform the app will run on. To get the target platform, you need to use this component :
+When building a cross-platform app, you'll want to re-use as much code as possible across platforms. Scenarios may arise where it makes sense for the code to be different. In React Native, separate implementation can be given at almost anywhere in the app code by recognizing the platform the app will run on. To get the target platform, you need to use this component :
 
 ```javascript
 // React Native
@@ -1249,14 +1215,14 @@ if (Theme.of(context).platform == TargetPlatform.iOS) {
 }
 ```
 
-# Debugging
+## Debugging
 
-## How do I access In-App Developer Menu?
+### How do I access In-App Developer Menu?
 
 In React Native, the developer menu can be accessed by shaking your device. ⌘D for the iOS Simulator or ⌘M for Android emulator.
 Similarly, in Flutter, if you start your application using `flutter run`, you can access the menu by typing `h` in the terminal window. If you are using IntelliJ, you can use its built-in tools.
 
-## How do I perform hot reload?
+### How do I perform hot reload?
 
 Instead of recompiling your app every time you make a change, you can reload your app instantly. The app is updated to reflect your change, and the current state of the app is preserved.
 In React Native, the shortcut is ⌘R for the iOS Simulator and tapping R twice on Android emulators.
@@ -1264,18 +1230,18 @@ In Flutter, If you are using IntelliJ IDE, you can select Save All (⌘s/ctrl-s)
 If you are running the app at the command line using flutter run, type `r` in the terminal window.
 You can also perform full restart by typing `R` in the terminal window.
 
-## Is there anything like Chrome Developer Tools in Flutter?
+### Is there anything like Chrome Developer Tools in Flutter?
 
-In Flutter, [`Dart Observatory`](https://dart-lang.github.io/observatory/) is used which is a tool for profiling and debugging. If you have started your application using `flutter run`, you can open the Web page at the Observatory URL printed to the console (e.g., `http://127.0.0.1:8100/`). If you are using IntelliJ, you can also debug your application using its built-in debugger.
-The Observatory also supports profiling, examining the heap, seeing executed lines of code, debugging memory leaks, debugging memory fragmentation etc. For more information, see [Observatory’s documentation](https://dart-lang.github.io/observatory/).
+In Flutter, [`Dart Observatory`](https://dart-lang.github.io/observatory/) is used which is a tool for debugging. If you have started your application using `flutter run`, you can open the Web page at the Observatory URL printed to the console (e.g., `http://127.0.0.1:8100/`). If you are using IntelliJ, you can also debug your application using its built-in debugger.
+The Observatory also supports profiling, examining the heap, observing executed lines of code, debugging memory leaks and memory fragmentation etc. For more information, see [Observatory’s documentation](https://dart-lang.github.io/observatory/).
 **Note:** You can check [here](https://flutter.io/debugging/) for more details on debugging.
 
-# Animations
+## Animations
 
-For a great user experience, animations are essential. In React Native, Animated API is used that makes it easy to create animations.
+For a great user experience, animations are essential. In React Native, we use Animated API to create animations.
 In Flutter, we use [`Animation`](https://docs.flutter.io/flutter/animation/Animation-class.html) class and [`AnimationController`](https://docs.flutter.io/flutter/animation/AnimationController-class.html) class. `Animation` is an abstract class that understands its current value and its state (completed or dismissed). `AnimationController` class lets you play an animation forward or in reverse, or stop an animation and set the animation to a specific value.
 
-## How do I add a simple fade-in animation?
+### How do I add a simple fade-in animation?
 
 In the React Native example, we use an animated component `FadeInView` using Animated API. We define initial opacity state, final state, the duration over which transition happens. We add animation component inside `Animated` component, then we map the opacity state `fadeAnim` to the opacity of the Text component we want to animate. Then, finally, we `start()` the animation.
 
@@ -1345,12 +1311,12 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 }
 ```
-#### Preview
+##### Preview
 ![Fade In Animation](./animations/flutterfade/screenshot/fade-in.gif)
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/flutterfade/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/rnfade/App.js).
 
-## How do I add swipe animation to Cards?
+### How do I add swipe animation to Cards?
 
 In React Native, you either use PanResponder or third-party libraries for swipe animation. In Flutter, we can achieve this animation by using the [`Dismissible`](https://docs.flutter.io/flutter/widgets/Dismissible-class.html) widget and nest the child widgets.
 
@@ -1365,7 +1331,7 @@ child: new Dismissible(
   ),
 ),
 ```
-#### Preview
+##### Preview
 ![Card Swipe using Dismissible](./animations/fluttercardswipe/screenshot/cardswipe.gif)
 
 **Note:** You can check the working code [here](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/animations/fluttercardswipe).
