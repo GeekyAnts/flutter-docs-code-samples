@@ -18,10 +18,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return new GestureDetector(
       child: new Scaffold(
+        key: _scaffoldKey,
         appBar: new AppBar(
           title: new Text("Gestures"),
         ),
@@ -34,16 +36,20 @@ class _MyHomePageState extends State<MyHomePage> {
         )),
       ),
       onTap: () {
-        print('Tapped');
+        _scaffoldKey.currentState
+            .showSnackBar(new SnackBar(content: new Text('Tapped')));
       },
       onLongPress: () {
-        print('Long Pressed');
+        _scaffoldKey.currentState
+            .showSnackBar(new SnackBar(content: new Text('Long Pressed')));
       },
       onVerticalDragEnd: (DragEndDetails value) {
-        print('Swiped Vertically');
+        _scaffoldKey.currentState
+            .showSnackBar(new SnackBar(content: new Text('Swiped Vertically')));
       },
       onHorizontalDragEnd: (DragEndDetails value) {
-        print('Swiped Horizontally');
+        _scaffoldKey.currentState.showSnackBar(
+            new SnackBar(content: new Text('Swiped Horizontally')));
       },
     );
   }
