@@ -6,10 +6,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: new MyHomePage(),
     );
   }
@@ -43,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    print(mainaxis);
     return new Scaffold(
         body: new Column(
             crossAxisAlignment: CrossAxisAlignment.start,

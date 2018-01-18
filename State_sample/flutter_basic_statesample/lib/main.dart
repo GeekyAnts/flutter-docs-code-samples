@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,31 +20,30 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
-class _MyHomePageState extends State<MyHomePage> {
 
-  bool showtext=true;
-  bool toggleState=true;
+class _MyHomePageState extends State<MyHomePage> {
+  bool showtext = true;
+  bool toggleState = true;
   Timer t2;
 
-  void toggleBlinkState(){
-    setState((){
-      toggleState=!toggleState;
+  void toggleBlinkState() {
+    setState(() {
+      toggleState = !toggleState;
     });
     var twenty = const Duration(milliseconds: 1000);
 
-     if(toggleState==false) {
-       t2=new Timer.periodic(twenty, (Timer t) {
-         toggleShowText();
-       });
-     }else
-       {
-         t2.cancel();
-       }
+    if (toggleState == false) {
+      t2 = new Timer.periodic(twenty, (Timer t) {
+        toggleShowText();
+      });
+    } else {
+      t2.cancel();
+    }
   }
 
-  void toggleShowText(){
-    setState((){
-      showtext=!showtext;
+  void toggleShowText() {
+    setState(() {
+      showtext = !showtext;
     });
   }
 
@@ -59,26 +57,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            (showtext?(
-              new Text(
-                'I love blinking.',
-              )
-            )
-                :
-              (new Container())
-            ),
+            (showtext
+                ? (new Text(
+                    'I love blinking.',
+                  ))
+                : (new Container())),
             new Padding(
-            padding: new EdgeInsets.only(top: 70.0),
-              child: new RaisedButton(
-                onPressed: toggleBlinkState,
-                child:
-                (toggleState?(
-                new Text("Blink"))
-                    :
-                (new Text("Stop Blinking"))
-                )
-              )
-            )
+                padding: new EdgeInsets.only(top: 70.0),
+                child: new RaisedButton(
+                    onPressed: toggleBlinkState,
+                    child: (toggleState
+                        ? (new Text("Blink"))
+                        : (new Text("Stop Blinking")))))
           ],
         ),
       ),

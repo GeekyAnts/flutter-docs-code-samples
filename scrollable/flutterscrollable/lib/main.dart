@@ -27,27 +27,30 @@ class _MyHomePageState extends State<MyHomePage> {
     'Jillian',
     'Jimmy',
     'Julie',
+    'Devin',
+    'Jackson',
+    'James',
+    'Joel',
+    'John',
+    'Jillian',
+    'Jimmy',
+    'Julie',
   ];
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Column(
-        children: <Widget>[
-          new ListView.builder(
-            shrinkWrap: true,
-            itemCount: data.length,
-            itemBuilder: (context, int index) {
-              return new Padding(
-                padding: new EdgeInsets.all(10.0),
-                child: new Text(
-                  data[index],
-                  style: new TextStyle(fontSize: 20.0),
-                ),
-              );
-            },
-          )
-        ],
-      ),
-    );
+        body: new ListView.builder(
+      shrinkWrap: true,
+      itemCount: data.length,
+      itemBuilder: (context, int index) {
+        return new Padding(
+          padding: new EdgeInsets.all(10.0),
+          child: new Text(
+            data[index],
+            style: new TextStyle(fontSize: 20.0),
+          ),
+        );
+      },
+    ));
   }
 }

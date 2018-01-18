@@ -28,20 +28,22 @@ class _MyHomePageState extends State<MyHomePage> {
         body: new Center(
             child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[new Text('Tap, Double Tap, Long Press or Swipe')],
+          children: <Widget>[
+            new Text('Tap, Long Press, Swipe Horizontally or Vertically '),
+          ],
         )),
       ),
       onTap: () {
-        print('Tap');
-      },
-      onDoubleTap: () {
-        print('Double Tap');
+        print('Tapped');
       },
       onLongPress: () {
-        print('Long Press');
+        print('Long Pressed');
       },
-      onVerticalDragStart: (DragStartDetails d) {
-        print('Swipe');
+      onVerticalDragEnd: (DragEndDetails value) {
+        print('Swiped Vertically');
+      },
+      onHorizontalDragEnd: (DragEndDetails value) {
+        print('Swiped Horizontally');
       },
     );
   }

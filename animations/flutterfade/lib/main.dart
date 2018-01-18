@@ -35,7 +35,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 
   Widget build(BuildContext context) {
-    return new FadeInView(animation: animation);
+    return new MaterialApp(home: new FadeInView(animation: animation));
   }
 
   dispose() {
