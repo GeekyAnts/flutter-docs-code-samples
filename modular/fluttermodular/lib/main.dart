@@ -20,7 +20,7 @@ class MyHomePage extends StatefulWidget {
 
 class CustomCard extends StatelessWidget {
   CustomCard({this.index, this.onPress});
-  final int index;
+  final index;
   final Function onPress;
   @override
   Widget build(BuildContext context) {

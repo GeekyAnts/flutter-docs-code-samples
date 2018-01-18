@@ -24,11 +24,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _ipAddress = 'Unknown';
-
+  var _ipAddress = 'Unknown';
+  final httpClient = createHttpClient();
+  final url = 'https://httpbin.org/ip';
   _getIPAddressUsingFuture() {
-    String url = 'https://httpbin.org/ip';
-    var httpClient = createHttpClient();
     Future response = httpClient.get(url);
     response.then((value) {
       setState(() {
@@ -38,10 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _getIPAddressUsingAwait() async {
-    String url = 'https://httpbin.org/ip';
-    var httpClient = createHttpClient();
     var response = await httpClient.read(url);
-    String ip = JSON.decode(response)['origin'];
+    var ip = JSON.decode(response)['origin'];
     setState(() {
       _ipAddress = ip;
     });
