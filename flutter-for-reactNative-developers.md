@@ -260,7 +260,10 @@ When writing an app, you will commonly author new widgets that are subclasses of
 In the above example, the widget tree consists of three widgets, the [Center](https://docs.flutter.io/flutter/widgets/Center-class.html), [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) and the [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) widget. The framework forces the root widget to cover the screen, which means the text “Hello World” ends up centered on the screen. In simple apps, it is easy to nest widgets but as the code base gets larger and the app becomes complex, it is advisable to break deeply nested widgets into functions that return the widget or smaller classes.
 
 ##### Preview
-<img src="./hello-world/flutterhelloworld/screenshots/android.png" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./hello-world/flutterhelloworld/screenshots/android.png" width="300">|<img src="./hello-world/flutterhelloworld/screenshots/iOS.png" width="300">|
+
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/hello-world/rnhelloworld) code.
 
@@ -320,7 +323,9 @@ new CustomCard(
 ```
 
 ##### Preview
-<img src="./modular/fluttermodular/screenshots/android.png" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./modular/fluttermodular/screenshots/android.png" width="300">|<img src="./modular/fluttermodular/screenshots/iOS.png" width="300">|
 
 
 **Note:** You can check the working code in [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js) code.
@@ -466,7 +471,9 @@ new ListView.builder(
 ```
 
 ##### Preview
-<img src="./scrollable/flutterscrollable/screenshots/android.gif" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./scrollable/flutterscrollable/screenshots/android.gif" width="300">|<img src="./scrollable/flutterscrollable/screenshots/iOS.gif" width="300">|
 
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/flutterscrollable/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/rnscrollable/App.js) code.
@@ -519,7 +526,9 @@ class _MyCanvasState extends State<MyCanvas> {
 }
 ```
 ##### Preview
-<img src="./canvas/fluttercanvas/screenshots/android.png" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./canvas/fluttercanvas/screenshots/android.png" width="300">|<img src="./canvas/fluttercanvas/screenshots/iOS.png" width="300">|
 
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/flutterscrollable/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/rnscrollable/App.js) code.
@@ -572,7 +581,9 @@ Another example would be when you need to align your components in a [Row](https
 In React Native, you would specify it as a prop. `flexDirection: “row”` . But in Flutter, you would use a [`Row`](https://docs.flutter.io/flutter/widgets/Row-class.html) widget and provide the required widget/widget tree as its children.
 
 ##### Preview
-<img src="./Layout_sample/basiclayout_sample/screenshots/android.gif" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./Layout_sample/basiclayout_sample/screenshots/android.gif" width="300">|<img src="./Layout_sample/basiclayout_sample/screenshots/iOS.gif" width="300">|
 
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/flutter-basic-layout-code/basiclayout_sample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/rn-simple-layout) code.
@@ -647,7 +658,9 @@ new Center(
 ```
 
 ##### Preview
-<img src="./styling/flutterstyling/screenshots/android.gif" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./styling/flutterstyling/screenshots/android.gif" width="300">|<img src="./styling/flutterstyling/screenshots/iOS.gif" width="300">|
 
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/flutterstyling/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/rnstyling/App.js) code.
@@ -697,6 +710,7 @@ class App extends Component {
 A widget which has no internal state to manage is a Stateless widget. [Icons](https://docs.flutter.io/flutter/material/Icons-class.html), [IconButton](https://docs.flutter.io/flutter/material/IconButton-class.html), and [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) are examples of stateless widgets, which subclass [StatelessWidget](https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html).
 Stateless widgets are useful when the part of the user interface you are describing does not depend on anything other than the configuration information in the object itself and the [`BuildContext`](https://docs.flutter.io/flutter/widgets/BuildContext-class.html) in which the widget is inflated.
 ```dart
+// Flutter
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -817,7 +831,9 @@ class MyApp extends StatelessWidget {
 ```
 
 ##### Preview
-<img src="./State_sample/flutter_basic_statesample/screenshots/android.gif" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./State_sample/flutter_basic_statesample/screenshots/android.gif" width="300">|<img src="./State_sample/flutter_basic_statesample/screenshots/iOS.gif" width="300">|
 
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/flutter_basic_statesample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/reactnative-state-sample) code.
@@ -891,10 +907,13 @@ new CustomCard(
 ```
 
 ##### Preview
-<img src="./modular/fluttermodular/screenshots/android.png" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./modular/fluttermodular/screenshots/android.png" width="300">|<img src="./modular/fluttermodular/screenshots/iOS.png" width="300">|
 
 
 **Note:** You can check the working code in [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js) code.
+
 ### Local Storage
 #### How do I store persistent key-value pairs that are global to the app in Flutter?
 In React Native, you would use the `setItem` and `getItem` functions of the `AsyncStorage` component to store and retrieve data that is persistent and global to the whole app.
@@ -1044,8 +1063,9 @@ drawer: new Drawer(
 ),
 ```
 ##### Preview
-<img src="./Navigation_example/flutternavigation/screenshots/android.gif" width="300">
-
+|Android|iOS|
+|:---:|:--:|
+|<img src="./Navigation_example/flutternavigation/screenshots/android.gif" width="300">|<img src="./Navigation_example/flutternavigation/screenshots/iOS.gif" width="300">|
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/flutter_navigation) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/reactnative-navigation-example) code.
 ## Gesture Detection and Touch Event Handling
@@ -1123,7 +1143,9 @@ new GestureDetector(
 You can check the list of all Flutter `GestureDetector` callbacks [here](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html#Properties) .
 
 ##### Preview
-<img src="./gestures/fluttergestures/screenshot/android.gif" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./gestures/fluttergestures/screenshots/android.gif" width="300">|<img src="./gestures/fluttergestures/screenshots/iOS.gif" width="300">|
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/fluttergestures/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/rngestures/App.js) code.
 
@@ -1161,10 +1183,13 @@ _getIPAddress() async {
 }
 ```
 ##### Preview
-<img src="./api-calls/flutterapicalls/screenshots/android.gif" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./api-calls/flutterapicalls/screenshots/android.gif" width="300">|<img src="./api-calls/flutterapicalls/screenshots/iOS.gif" width="300">|
 
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/flutterapicalls/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/rnapicalls/App.js) code.
+
 ## Form Input
 ### How do I use `TextInput` field in Flutter?
 In React Native, typically you would use a `TextInput` component to show a text input box and use the callback to store the value in a variable.
@@ -1225,7 +1250,9 @@ new Form(
 ```
 
 ##### Preview
-<img src="./input-fields/flutterinputfields/screenshots/android.gif" width="300">
+|Android|iOS|
+|:---:|:--:|
+|<img src="./input-fields/flutterinputfields/screenshots/android.gif" width="300">|<img src="./input-fields/flutterinputfields/screenshots/iOS.gif" width="300">|
 
 
 **Note:** You can check out the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/flutterinputfields/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/rninputfields/App.js)
@@ -1354,7 +1381,10 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
 ```
 
 ##### Preview
-<img src="./animations/flutterfade/screenshot/android.gif" width="300">
+
+|Android|iOS|
+|:---:|:--:|
+|<img src="./animations/flutterfade/screenshots/android.gif" width="300">|<img src="./animations/flutterfade/screenshots/iOS.gif" width="300">|
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/flutterfade/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/rnfade/App.js).
 ### How do I add swipe animation to Cards?
@@ -1373,6 +1403,82 @@ child: new Dismissible(
 ```
 
 ##### Preview
-<img src="./animations/fluttercardswipe/screenshot/android.gif" width="300">
+
+|Android|iOS|
+|:---:|:--:|
+|<img src="./animations/fluttercardswipe/screenshots/android.gif" width="300">|<img src="./animations/fluttercardswipe/screenshots/iOS.gif" width="300">|
 
 **Note:** You can check the working code [here](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/animations/fluttercardswipe).
+
+## CheatSheet
+
+| React Native Component                                                                    | Flutter Widget                                                                                             | Description                                                                                                                            |
+| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| [Button](https://facebook.github.io/react-native/docs/button.html)                        | [RaisedButton](https://docs.flutter.io/flutter/material/RaisedButton-class.html)                           | A basic button that should render nicely on any platform.                                                                              |
+|                                                                                           |  onPress [required]                                                                                        | The callback that is called when the button is tapped or otherwise activated.                                                          |
+|                                                                                           | Child  (A Text widget is used)                                                                             | Text to display inside the button                                                                                                      |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [Button](https://facebook.github.io/react-native/docs/button.html)                        | [FlatButton](https://docs.flutter.io/flutter/material/FlatButton-class.html)                               | A basic material design button                                                                                                         |
+|                                                                                           |  onPress [required]                                                                                        | A callback that is called when the button is tapped or otherwise activated.                                                            |
+|                                                                                           | Child  (A Text widget is used)                                                                             | Text to display inside the button                                                                                                      |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [ScrollView](https://facebook.github.io/react-native/docs/scrollview.html)                | [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html)                                    | A scrollable list of widgets arranged linearly.|
+||        children                                                                              |( \<Widget> []) List of child widgets to display.
+||controller |[ [ScrollController](https://docs.flutter.io/flutter/widgets/ScrollController-class.html) ] An object that can be used to control the position to which this scroll view is scrolled.
+||itemExtent|[ double ] If non-null, forces the children to have the given extent in the scroll direction. 
+||scrollDirection|[ [Axis](https://docs.flutter.io/flutter/painting/Axis-class.html) ] The axis along which the scroll view scrolls.
+||                                                                                                            |                                                                                                                                        |
+| [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)                    | [ListView.builder()](https://docs.flutter.io/flutter/widgets/ListView/ListView.builder.html)               | Constructor for linear array of widgets that are created on demand.
+||itemBuilder [required] |[[ IndexedWidgetBuilder](https://docs.flutter.io/flutter/widgets/IndexedWidgetBuilder.html)] helps in building the children on demand. This callback will be called only with indices greater than or equal to zero and less than itemCount.
+||itemCount |[ int ] It improves the ability of the ListView to estimate the maximum scroll extent.
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [Image](https://docs.flutter.io/flutter/widgets/Image-class.html)                         | [Image](https://facebook.github.io/react-native/docs/image.html)                                           | A widget that displays an image.                                                                                                       |
+|                                                                                           |  image [required]                                                                                          | The image to display.                                                                                                                  |
+|                                                                                           | Image.asset                                                                                                | Several constructors are provided for the various ways that an image can be specified.                                                 |
+|                                                                                           | width, height, color, alignment                                                                            | Style and Layout for the Image                                                                                                         |
+|                                                                                           | fit                                                                                                        | Inscribing the image into the space allocated during layout.                                                                           |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [Modal](https://facebook.github.io/react-native/docs/modal.html)                          | [ModalRoute](https://docs.flutter.io/flutter/widgets/ModalRoute-class.html)                                | A route that blocks interaction with previous routes.                                                                                  |
+|                                                                                           | animation                                                                                                  | The animation that drives the route's transition and the previous route's forward transition.                                          |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+|  [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) | [CircularProgressIndicator](https://docs.flutter.io/flutter/material/CircularProgressIndicator-class.html) | A widget that shows progress along a circle.                                                                                           |
+|                                                                                           | strokeWidth                                                                                                | The width of the line used to draw the circle.                                                                                         |
+|                                                                                           | backgroundColor                                                                                            | The progress indicator's background color. The current theme's ThemeData.backgroundColor by default.                                   |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+|  [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) | [LinearProgressIndicator](https://docs.flutter.io/flutter/material/LinearProgressIndicator-class.html)     | A widget that shows progress along a circle.                                                                                           |
+|                                                                                           | value                                                                                                      | the value of this progress indicator                                                                                                   |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [RefreshControl](https://facebook.github.io/react-native/docs/refreshcontrol.html)        | [RefreshIndicator](https://docs.flutter.io/flutter/material/RefreshIndicator-class.html)                   | A widget that supports the Material "swipe to refresh" idiom.                                                                          |
+|                                                                                           | color                                                                                                      | The progress indicator's foreground color.                                                                                             |
+|                                                                                           | onRefresh                                                                                                  | A function that's called when the user has dragged the refresh indicator far enough to demonstrate that they want the app to refresh.  |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [View](https://facebook.github.io/react-native/docs/view.html)                            | [Container](https://docs.flutter.io/flutter/widgets/Container-class.html)                                  | Surrounds child widget.                                                                                                                |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [View](https://facebook.github.io/react-native/docs/view.html)                            | [Column](https://docs.flutter.io/flutter/widgets/Column-class.html)                                        | displays its children in a vertical array                                                                                              |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [View](https://facebook.github.io/react-native/docs/view.html)                            | [Row](https://docs.flutter.io/flutter/widgets/Row-class.html)                                              | displays its children in a horizontal array                                                                                            |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [View](https://facebook.github.io/react-native/docs/view.html)                            | [Center](https://docs.flutter.io/flutter/widgets/Center-class.html)                                        | centers its child within itself.                                                                                                       |
+|                                                                                           |                                                                                                            |                                                                                                                                        |
+| [View](https://facebook.github.io/react-native/docs/view.html)                            | [Padding](https://docs.flutter.io/flutter/widgets/Padding-class.html)                                      | insets its child by the given padding.                                                                                                 |
+|                                                                                           | padding [required]                                                                                         | [ EdgeInsets ] amount of space by which to inset the child.
+|||
+| [TouchableOpacity](https://facebook.github.io/react-native/docs/touchableopacity.html)    | [GestureDetector](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html)                      | detects gestures                                                                                                                       |
+|                                                                                           | onTap                                                                                                      | callback when tap occurs                                                                                                               |
+|                                                                                           | onDoubleTap                                                                                                | callback when tap occurs 
+|||
+| [TextInput](https://docs.flutter.io/flutter/services/TextInput-class.html)                | [TextInput](https://facebook.github.io/react-native/docs/textinput.html)                                   | interface to the system's text input control                                                                                           |
+|                                                                                           | controller                                                                                                 | [ [TextEditingController](https://docs.flutter.io/flutter/widgets/TextEditingController-class.html) ] to access and modify text.
+|||
+| [Text](https://facebook.github.io/react-native/docs/text.html)                          | [Text](https://docs.flutter.io/flutter/widgets/Text-class.html)                                            | A run of text with a single style.                                                                                                                                                                           |
+|                                                                                         | data                                                                                                      | [ String ] The text to display.                                                                                                                                                                              |
+|                                                                                         | textDirection                                                                                             | [ [TextAlign]( https://docs.flutter.io/flutter/dart-ui/TextAlign-class.html) ] How the text should be aligned horizontally.                                                                                     |
+|                                                                                         |                                                                                                           |                                                                                                                                                                                                              |
+| [Switch](https://facebook.github.io/react-native/docs/switch.html)                      | [Switch](https://docs.flutter.io/flutter/material/Switch-class.html)                                      | A material design switch.                                                                                                                                                                                    |
+|                                                                                         | value [required]                                                                                          | [ boolean ] Whether this switch is on or off                                                                                                                                                                 |
+|                                                                                         | onChanged [required]                                                                                      | [ callback ] Called when the user toggles the switch on or off                                                                                                                                               |
+|                                                                                         |                                                                                                           |                                                                                                                                                                                                              |
+| [Slider](https://facebook.github.io/react-native/docs/slider.html)                      | [Slider](https://docs.flutter.io/flutter/material/Slider-class.html)                                      | Used to select from a range of values.                                                                                                                                                                       |
+|                                                                                         | value [required]                                                                                          | [ double ] current value of slider                                                                                                                                                                           |
+|                                                                                         | onChanged [required]                                                                                      | Called when the user selects a new value for the slider                                                                                                                                                      |
+
