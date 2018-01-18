@@ -259,6 +259,9 @@ In Flutter, the execution starts off with the `main()` function.
 When writing an app, you will commonly author new widgets that are subclasses of either [StatelessWidget](https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html) or [StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html), depending on whether your widget manages any state. In the above Hello World example, MyApp class extends a StatelessWidget and overrides a build function which describes the widget in terms of other, lower-level widgets.
 In the above example, the widget tree consists of three widgets, the [Center](https://docs.flutter.io/flutter/widgets/Center-class.html), [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) and the [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) widget. The framework forces the root widget to cover the screen, which means the text “Hello World” ends up centered on the screen. In simple apps, it is easy to nest widgets but as the code base gets larger and the app becomes complex, it is advisable to break deeply nested widgets into functions that return the widget or smaller classes.
 
+##### Preview
+<img src="./hello-world/flutterhelloworld/screenshots/android.png" width="300">
+
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/hello-world/rnhelloworld) code.
 
 ### How do I create reusable components and use them?
@@ -315,6 +318,10 @@ new CustomCard(
 )
     ...
 ```
+
+##### Preview
+<img src="./modular/fluttermodular/screenshots/android.png" width="300">
+
 
 **Note:** You can check the working code in [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js) code.
 ## Project Structure & Resources
@@ -412,6 +419,7 @@ To better structure your app, all the source files go into `/lib`.
 <b>`lib/routes.dart`</b> - contains all the routes.
 
 <b>`lib/main.dart`</b> - entry point the app.
+
 ### How do I install plugins/packages?
 In Flutter, you cannot install packages from the command-line like in React Native where you use :
 `yarn add {package-name}` / `npm install --save {package-name}`.
@@ -433,6 +441,7 @@ Flutter widgets are built using a modern react-style framework, which takes insp
 In React Native, View is a container that supports layout with <b>`Flexbox`</b>, style, touch handling, and accessibility controls. In Flutter, we have layout specific widgets like [Container](https://docs.flutter.io/flutter/widgets/Container-class.html), [Column](https://docs.flutter.io/flutter/widgets/Column-class.html), [Row](https://docs.flutter.io/flutter/widgets/Row-class.html), [Center](https://docs.flutter.io/flutter/widgets/Center-class.html) etc. You can also use [Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html) which provides options for showing drawers, snack bars, and bottom sheets.
 
 **Note:** You can also check the layout widget catalog [here](https://flutter.io/widgets/layout/).
+
 ### What is the equivalent of `FlatList` / `ListView`?
 List is a scrollable list of components arranged linearly. In React Native we use `FlatList` or `ListView` for a performant interface for rendering simple, flat lists.
 ```javascript
@@ -455,6 +464,10 @@ new ListView.builder(
   },
 )
 ```
+
+##### Preview
+<img src="./scrollable/flutterscrollable/screenshots/android.gif" width="300">
+
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/flutterscrollable/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/rnscrollable/App.js) code.
 ### How do I use a Canvas to draw/paint?
@@ -505,6 +518,9 @@ class _MyCanvasState extends State<MyCanvas> {
   }
 }
 ```
+##### Preview
+<img src="./canvas/fluttercanvas/screenshots/android.png" width="300">
+
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/flutterscrollable/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/rnscrollable/App.js) code.
 
@@ -554,6 +570,10 @@ new Center(
 Another example would be when you need to align your components in a [Row](https://docs.flutter.io/flutter/widgets/Row-class.html) or [Column](https://docs.flutter.io/flutter/widgets/Column-class.html). 
 
 In React Native, you would specify it as a prop. `flexDirection: “row”` . But in Flutter, you would use a [`Row`](https://docs.flutter.io/flutter/widgets/Row-class.html) widget and provide the required widget/widget tree as its children.
+
+##### Preview
+<img src="./Layout_sample/basiclayout_sample/screenshots/android.gif" width="300">
+
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/flutter-basic-layout-code/basiclayout_sample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/rn-simple-layout) code.
 
@@ -625,6 +645,11 @@ new Center(
   ),
 )
 ```
+
+##### Preview
+<img src="./styling/flutterstyling/screenshots/android.gif" width="300">
+
+
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/flutterstyling/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/rnstyling/App.js) code.
 
 ### How to use `Icons` and `Colors` in Flutter?
@@ -790,7 +815,13 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+##### Preview
+<img src="./State_sample/flutter_basic_statesample/screenshots/android.gif" width="300">
+
+
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/flutter_basic_statesample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/reactnative-state-sample) code.
+
 ### Props
 In React Native, most components can be customized when they are created with different parameters. These creation parameters are called props. These parameters can be used in child component using `this.props`.
 ```javascript
@@ -858,6 +889,11 @@ new CustomCard(
   },
 )
 ```
+
+##### Preview
+<img src="./modular/fluttermodular/screenshots/android.png" width="300">
+
+
 **Note:** You can check the working code in [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js) code.
 ### Local Storage
 #### How do I store persistent key-value pairs that are global to the app in Flutter?
@@ -1007,6 +1043,10 @@ drawer: new Drawer(
   elevation: 20.0,
 ),
 ```
+##### Preview
+<img src="./Navigation_example/flutternavigation/screenshots/android.gif" width="300">
+
+
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/flutter_navigation) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/reactnative-navigation-example) code.
 ## Gesture Detection and Touch Event Handling
 ### How do I add an click/press listeners to a widget in Flutter?
@@ -1082,6 +1122,9 @@ new GestureDetector(
 ```
 You can check the list of all Flutter `GestureDetector` callbacks [here](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html#Properties) .
 
+##### Preview
+<img src="./gestures/fluttergestures/screenshot/android.gif" width="300">
+
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/fluttergestures/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/rngestures/App.js) code.
 
 ## Making HTTP Networking Requests
@@ -1117,6 +1160,10 @@ _getIPAddress() async {
   });
 }
 ```
+##### Preview
+<img src="./api-calls/flutterapicalls/screenshots/android.gif" width="300">
+
+
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/flutterapicalls/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/rnapicalls/App.js) code.
 ## Form Input
 ### How do I use `TextInput` field in Flutter?
@@ -1153,7 +1200,6 @@ new RaisedButton(
   )
 ```
 
-**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/flutterinputfields/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/rninputfields/App.js)
 ### How do I use `Forms` in Flutter?
 In Flutter, we use [`Form`](https://docs.flutter.io/flutter/widgets/Form-class.html) widget, where [`TextFormField`](https://docs.flutter.io/flutter/material/TextFormField-class.html) widgets along with the submit button are passed as children. The `TextFormField` widget has a parameter called [`onSaved`](https://docs.flutter.io/flutter/widgets/FormField/onSaved.html) which takes a callback and executes when the form is saved.
 The process is to call methods on FormState to save, reset, or validate each FormField that is a descendant of this Form. To obtain the `FormState`, you may use `Form.of` with a context whose ancestor is the Form, or pass a `GlobalKey` to the Form constructor and call `GlobalKey.currentState`.
@@ -1177,6 +1223,11 @@ new Form(
   ),
 )
 ```
+
+##### Preview
+<img src="./input-fields/flutterinputfields/screenshots/android.gif" width="300">
+
+
 **Note:** You can check out the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/flutterinputfields/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/rninputfields/App.js)
 
 ## Platform-specific code
@@ -1301,12 +1352,14 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 }
 ```
+
 ##### Preview
-![Fade In Animation](./animations/flutterfade/screenshot/fade-in.gif)
+<img src="./animations/flutterfade/screenshot/android.gif" width="300">
 
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/flutterfade/lib/main.dart) and [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/rnfade/App.js).
 ### How do I add swipe animation to Cards?
 In React Native, you either use PanResponder or third-party libraries for swipe animation. In Flutter, we can achieve this animation by using the [`Dismissible`](https://docs.flutter.io/flutter/widgets/Dismissible-class.html) widget and nest the child widgets.
+
 ```dart
 child: new Dismissible(
   key: key,
@@ -1318,7 +1371,8 @@ child: new Dismissible(
   ),
 ),
 ```
+
 ##### Preview
-![Card Swipe using Dismissible](./animations/fluttercardswipe/screenshot/cardswipe.gif)
+<img src="./animations/fluttercardswipe/screenshot/android.gif" width="300">
 
 **Note:** You can check the working code [here](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/animations/fluttercardswipe).
