@@ -114,9 +114,9 @@ _getIPAddress = () => {
 Whereas Dart uses [`Future`](https://www.dartlang.org/tutorials/language/futures) objects to handle this.
 ```dart
 // Dart
+final url = 'https://httpbin.org/ip';
+final httpClient = createHttpClient();
 _getIPAddress() {
-  String url = 'https://httpbin.org/ip';
-  var httpClient = createHttpClient();
   Future response = httpClient.get(url);
   response.then((value) {
     setState(() {
@@ -139,9 +139,9 @@ async _getIPAddress() {
 Whereas in Dart,an `async` function returns a `Future`, and the body of the function is scheduled for execution later. The `await` operator is used to wait for a `Future`.
 ```dart
 // Dart
+final url = 'https://httpbin.org/ip';
+final httpClient = createHttpClient();
 _getIPAddress() async {
-  String url = 'https://httpbin.org/ip';
-  var httpClient = createHttpClient();
   var response = await httpClient.read(url);
   String ip = JSON.decode(response)['origin'];
   setState(() {
@@ -157,9 +157,10 @@ A stream is a sequence of ongoing events that are ordered in time. It can emit t
   Streams are cheap and ubiquitous. Anything can be a stream; Variables, user inputs, properties, caches, data structures, etc.
 Generator functions afford us the power of streams in JavaScript.Consider this example in Javascript,
 ```javascript
+// JavaScript
 var sum=0;
 function* sumStream () {
-  let n = 1;
+  var n = 1;
   while (true) {
     yield sum=sum+n++;
   }
@@ -293,7 +294,7 @@ Alternatively, you can also create and call a function that returns the widget.
 // Flutter
 class CustomCard extends StatelessWidget {
   CustomCard({this.index, this.onPress});
-  final int index;
+  final index;
   final Function onPress;
   @override
   Widget build(BuildContext context) {
@@ -878,7 +879,7 @@ In Flutter, you would just assign a local variable or function marked `final` wi
 // Flutter
 class CustomCard extends StatelessWidget {
   CustomCard({this.index, this.onPress});
-  final int index;
+  final index;
   final Function onPress;
   @override
   Widget build(BuildContext context) {
@@ -1172,9 +1173,9 @@ import 'dart:io';
 The client supports HTTP operations, such as GET, POST, PUT, DELETE.
 ```dart
 // Flutter
+final url = 'https://httpbin.org/ip';
+final httpClient = createHttpClient();
 _getIPAddress() async {
-  String url = 'https://httpbin.org/ip';
-  var httpClient = createHttpClient();
   var response = await httpClient.get(url);
   String ip = JSON.decode(response.body)['origin'];
   setState(() {
