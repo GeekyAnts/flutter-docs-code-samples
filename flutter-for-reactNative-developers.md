@@ -3,7 +3,9 @@ This document is meant for React Native developers looking to apply their existi
 
 While React Native uses Javascript, Flutter uses a language called Dart.  
 ## A Brief Introduction to Dart for JavaScript Developers
-Dart is an open-source, scalable programming language, for building web, server, and mobile apps. It is an object-oriented, class defined, single inheritance language that uses a C-style syntax that transcompiles optionally into JavaScript. It supports interfaces, abstract classes, optional typing, and a sound type system.
+[Dart](https://www.dartlang.org/) is an open-source, scalable programming language, for building web, server, and mobile apps. It is an object-oriented, class defined, single inheritance language that uses a C-style syntax that is AOT-compiled into native and also transcompiles optionally into JavaScript. It supports interfaces, abstract classes and strong mode.
+
+You can play around with the Dart code in the [DartPad](https://dartpad.dartlang.org/).
 ### Entry Point
 While JavaScript doesn't have any specific entry function, Dart does have an entry function called `main()`.
 ```javascript
@@ -31,7 +33,8 @@ print('Hello World');
 ```
 ### Variables
 #### Creating and Assigning Variables
-While JavaScript variables cannot be typed, Dart variables can be typed (but don't need to be).
+While JavaScript variables cannot be typed, Dart variables are optionally typed but it is a good practice to use typed variables. In [Dart 2](https://www.dartlang.org/dart-2), types are mandatory. With both static and runtime type checks, it has a sound type system. This type system enables better tooling, as well as earlier feedback when you write code.
+
 ```javascript
 // JavaScript
 var name = "JavaScript";
@@ -39,7 +42,7 @@ var name = "JavaScript";
 ```dart
 // Dart
 String name = 'dart';
-var otherName = 'Dart';
+var otherName = 'Dart'; // Also inferred to be a String in Strong mode.
 // Both are acceptable in Dart.
 ```
 #### Default value
@@ -53,6 +56,8 @@ var name; // == undefined
 var name; // == null
 int x; // == null
 ```
+**Note:** Check [here](https://www.dartlang.org/resources/dart-tips/dart-tips-ep-3) for more details on variables.
+
 ### Checking for null/zero
 In Dart, only the boolean value true is treated as true. But in JavaScript, values like 1 or any other non-null objects are treated as true.
 ```javascript
@@ -95,6 +100,8 @@ bool fn() {
   return true;
 }
 ```
+**Note:** Check [here](https://www.dartlang.org/resources/dart-tips/dart-tips-ep-6) for more details on functions.
+
 ### Asynchronous Programming
 #### Future
 Like JavaScript, Dart supports single-threaded execution. In JavaScript, the `Promise` object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
@@ -117,7 +124,7 @@ Whereas Dart uses [`Future`](https://www.dartlang.org/tutorials/language/futures
 final url = 'https://httpbin.org/ip';
 final httpClient = createHttpClient();
 _getIPAddress() {
-  Future response = httpClient.get(url);
+  Future<Response> response = httpClient.get(url);
   response.then((value) {
     setState(() {
       _ipAddress = JSON.decode(value.body)['origin'];
@@ -125,6 +132,8 @@ _getIPAddress() {
   }).catchError((error) => print(error));
 }
 ```
+**Note:** Check [here](https://www.dartlang.org/tutorials/language/futures) for more details on future.
+
 #### async / await
 The async function declaration defines an asynchronous function. In JavaScript, when an async function is called, it returns a `Promise`. The `await` operator is used to wait for a `Promise`.
 ```javascript
@@ -149,6 +158,8 @@ _getIPAddress() async {
   });
 }
 ```
+**Note:** Check [here](https://www.dartlang.org/articles/language/await-async) for more details on async/await.
+
 #### Streams
 A stream is a sequence of ongoing events that are ordered in time. It can emit three different things:
 * a value (of some type)
@@ -177,7 +188,8 @@ return sum2;
 var sum1=countStream (10);
 console.log(sum1); // 55
 ```
-In the above example, We keep track of the current number in the sequence with n. We set n = 1 because naturally (pun intended) the natural numbers start with 1. Then, inside an infinite loop, we yield n and increment it to the next number in the sequence.
+In the above example, We keep track of the current number in the sequence with n. We set n = 1 because naturally (pun intended) the natural numbers start with 1. Then, inside an infinite loop, we yield sum added to n which is incremented to the next number in the sequence.
+
 In Dart, Streams can be created in many ways, but they can all be used in the same way: the asynchronous for loop (commonly just called await for) iterates over the events of a stream like the for loop iterates over an Iterable. For example:
 ```dart
 // Dart
@@ -201,11 +213,10 @@ main() async {
 ```
 This code simply receives each event of a stream of integer events, adds them up, and returns (a future of) the sum. When the loop body ends, the function is paused until the next event arrives or the stream is done.
 
+**Note:** Check [here](https://www.dartlang.org/tutorials/language/streams) for more details on Streams. You can refer [here](https://www.dartlang.org/resources/synonyms) for more differences.
 
-**Note:** You can refer [here](https://www.dartlang.org/resources/synonyms) for more differences.
-
-## Learn The Basics
-### What is the equivalent of React Native `Hello World` app in Flutter?
+## Learn The Basics of Flutter
+### How do I create a Flutter app?
 In React Native, you would start off your development process by creating the project using the below command line tool.
 ```sh
 $ create-react-native-app {projectname}
@@ -218,7 +229,7 @@ $ flutter create {projectname}
 In React Native, you would go to the project directory and use 
 `npm run ios/android` or `yarn run ios/android`.
 In [Flutter](https://flutter.io/getting-started/), if you are using the terminal, then you use the `flutter run` command in the project root directory to run your app on a connected device or simulator. 
-If you are using IntelliJ IDE, then you can just press the `run` icon in the toolbar of the project.
+If you are using IntelliJ, Android Studio or Visual Studio Code then you can use the in-built tools to run the app. Refer [here](https://flutter.io/getting-started/) for more details.
 ### How do I use import statements?
 ```javascript
 //React Native
@@ -230,7 +241,8 @@ In Flutter, you import the `material.dart` from the flutter package, which allow
 ```dart
 import 'package:flutter/material.dart';
 ```
-Let’s have a look at each of the classes :
+### What is the equivalent of React Native `Hello World` app in Flutter?
+Let’s have a look at the respective codes for `Hello World` :
 ```javascript
 // React Native
 export default class App extends React.Component {
@@ -245,20 +257,32 @@ export default class App extends React.Component {
 ```
 ```dart
 //Flutter
-class App extends StatelessWidget {
-@override
+class MyApp extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
-    return new Center(
-      child: new Text( 'Hello World'),
+    return new MaterialApp(
+      home: new Scaffold(
+        body: new Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Center(
+              child: new Text(
+                'Hello World',
+              ),
+            ),
+          ],
+        ),
+      )
     );
   }
 }
 ```
 The `App` class in React Native extends `React.Component` and implements the render method by returning a view component as shown.
-In Flutter, the execution starts off with the `main()` function.
+In Flutter, the execution starts off with the `main()` function. Alternatively, you don't have to use the MaterialApp, you can use the `textDirection` parameter of the [`Text`](https://docs.flutter.io/flutter/widgets/Text-class.html) widget.
 ### How do I use Widgets and nest them to form a Widget tree?
 When writing an app, you will commonly author new widgets that are subclasses of either [StatelessWidget](https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html) or [StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html), depending on whether your widget manages any state. In the above Hello World example, MyApp class extends a StatelessWidget and overrides a build function which describes the widget in terms of other, lower-level widgets.
-In the above example, the widget tree consists of three widgets, the [Center](https://docs.flutter.io/flutter/widgets/Center-class.html), [Column](https://docs.flutter.io/flutter/widgets/Column-class.html) and the [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) widget. The framework forces the root widget to cover the screen, which means the text “Hello World” ends up centered on the screen. In simple apps, it is easy to nest widgets, but as the code base gets larger and the app becomes complex, it is advisable to break deeply nested widgets into functions that return the widget or smaller classes.
+
+In the above example, the widget tree consists of five widgets,the [MaterialApp](https://docs.flutter.io/flutter/material/MaterialApp-class.html),[Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html), [Column](https://docs.flutter.io/flutter/widgets/Column-class.html), [Center](https://docs.flutter.io/flutter/widgets/Center-class.html) and the [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) widget. The `MaterialApp` wraps a number of widgets that are commonly required for material design applications and the `Scaffold` implements the basic material design visual layout structure. In simple apps, it is easy to nest widgets, but as the code base gets larger and the app becomes complex, it is advisable to break deeply nested widgets into functions that return the widget or smaller classes.
 
 ##### Preview
 |Android|iOS|
@@ -269,7 +293,7 @@ In the above example, the widget tree consists of three widgets, the [Center](ht
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/hello-world/rnhelloworld) code.
 
 ### How do I create reusable components and use them?
-In React Native, you would create a separate class for reusable component and use that class as a component. You would then use props to access the passed variables and functions. In the example, we created a custom card class and used it inside parent class.
+In React Native, you would create a separate class for a reusable component and use that class as a component. You would then use props to access the passed variables and functions. In the example, we created a custom card class and used it inside parent class.
 ```javascript
 // React Native
 class CustomCard extends React.Component {
@@ -333,7 +357,7 @@ new CustomCard(
 ## Project Structure & Resources
 ### Where do I start writing the code?
 If you have used CRNA (create-react-native-app), then you have written your code inside `App.js`. 
-In Flutter, the entry file is `’projectname’/lib/main.dart` and execution starts from the main function. The minimal Flutter app simply calls the `runApp` function with a widget. The `runApp` function takes the given Widget and makes it the root of the widget tree. Any widget can be passed to it. But, if you are creating an app that uses material design, you can use [MaterialApp](https://docs.flutter.io/flutter/material/MaterialApp-class.html) class as root and define a theme that can be accessed across the app. If you are creating a screen, then you can use [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html). But it is not mandatory.
+In Flutter, the entry file is `’projectname’/lib/main.dart` and execution starts from the main function. The minimal Flutter app simply calls the `runApp` function with a widget. The `runApp` function takes the given Widget and makes it the root of the widget tree. Any widget can be passed to it. But, if you are creating an app that uses material design, you can use [MaterialApp](https://docs.flutter.io/flutter/material/MaterialApp-class.html) class as root and define a theme that can be accessed across the app. If you are creating a screen, then you can use [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) which implements the basic material design visual layout structure. But it is not mandatory.
 ### How are files structured in a Flutter app?
 <pre>
 ┬
@@ -348,7 +372,6 @@ In Flutter, the entry file is `’projectname’/lib/main.dart` and execution st
   ├ test
   └ pubspec.yaml
 </pre>
-<b>`root/.idea`</b> - IDE’s project specific settings files.
 
 <b>`root/android`</b> - file containing android native code.
 
@@ -368,7 +391,8 @@ In React Native, to add a static image to your app, place it somewhere in your s
 <Image source={require("./my-icon.png")} />
 ```
 Flutter apps can include both code and assets (a.k.a. resources). An asset is a file that is bundled and deployed with your app and is accessible at runtime. Common types of assets include static data (such as JSON files), configuration files, icons, and images (JPEG, GIF, PNG, and BMP).
-All the assets can live under any folder under the root directory, for best practice, you can put them under `assets` folder.
+All the assets can live under any folder under the root directory, for best practice, you can put them under the `assets` folder.
+
 Flutter uses the pubspec.yaml file, located at the root of your project, to identify assets required by an app.
 ```yaml
 flutter:
@@ -383,7 +407,7 @@ It is used like this in the app code,
 image: new AssetImage(assets/background.png'),
 ```
 
-### How do I load Images dynamically?
+### How do I load images over a network?
 
 In React Native, you specify the `uri` in the `source` prop of the `Image` component and also provide the size if needed.
 
@@ -397,35 +421,6 @@ In Flutter, using `NetworkImage` creates an object that fetches the image from t
 // Flutter
 new NetworkImage("{URL}"),
 ```
-
-### What are the standard practices to structure your mobile app?
-To better structure your app, all the source files go into `/lib`.
-<pre>
-┬
-└ projectname
-  ┬
-  └ lib
-    ┬
-    ├ components
-    ├ screens
-    ├ utils
-    ├ themes
-    ├ routes.dart
-    └ main.dart
-</pre>
-
-<b>`lib/components`</b> - contains all the small components.
-
-<b>`lib/screens`</b> - contains screens using components.
-
-<b>`lib/utils`</b> - contains reusable functions.
-
-<b>`lib/themes`</b> - contains themes which can be used globally.
-
-<b>`lib/routes.dart`</b> - contains all the routes.
-
-<b>`lib/main.dart`</b> - entry point the app.
-
 ### How do I install plugins/packages?
 In Flutter, you cannot install packages from the command-line like in React Native where you use :
 `yarn add {package-name}` / `npm install --save {package-name}`.
@@ -440,7 +435,7 @@ To install a package in flutter follow these steps:
 You can find the Flutter packages [here](https://pub.dartlang.org/flutter/packages) and compare them based on their scores.
 
 ## Built-In Widgets
-Flutter widgets are built using a modern react-style framework, which takes inspiration from React. The central idea is that you build your UI out of widgets. Widgets describe what their view should look like given their current configuration and state.
+Flutter widgets are built using a modern react-style framework. The central idea is that you build your UI out of widgets. Widgets describe what their view should look like given their current configuration and state.
 
 ### Views
 ### What is the equivalent of a `View` in Flutter?
@@ -1286,7 +1281,7 @@ if (Theme.of(context).platform == TargetPlatform.iOS) {
 ## Debugging
 ### How do I access In-App Developer Menu?
 In React Native, the developer menu can be accessed by shaking your device. ⌘D for the iOS Simulator or ⌘M for Android emulator.
-Similarly, in Flutter, if you start your application using `flutter run`. If you are using IntelliJ, you can use its built-in tools. You can also access the menu by typing `h` in the terminal window.
+Similarly, in Flutter, if you start your application using `flutter run`. If you are using an IDE , you can use its built-in tools. You can also access the menu by typing `h` in the terminal window.
 
 |Action|Terminal Shortcut| Debug functions/ properties|
 |:--:|:--:|:--:|
@@ -1303,11 +1298,11 @@ Similarly, in Flutter, if you start your application using `flutter run`. If you
 ### How do I perform hot reload?
 Instead of recompiling your app every time you make a change, you can reload your app instantly. The app is updated to reflect your change, and the current state of the app is preserved.
 In React Native, the shortcut is ⌘R for the iOS Simulator and tapping R twice on Android emulators.
-In Flutter, If you are using IntelliJ IDE, you can select Save All (⌘s/ctrl-s), or click the Hot Reload button on the toolbar.
+In Flutter, If you are using IntelliJ IDE or Android Studio, you can select Save All (⌘s/ctrl-s), or click the Hot Reload button on the toolbar.
 If you are running the app at the command line using flutter run, type `r` in the terminal window.
 You can also perform full restart by typing `R` in the terminal window.
 ### Is there anything like Chrome Developer Tools in Flutter?
-In Flutter, [`Dart Observatory`](https://dart-lang.github.io/observatory/) is used which is a tool for debugging. If you have started your application using `flutter run`, you can open the Web page at the Observatory URL printed to the console (e.g., `http://127.0.0.1:8100/`). If you are using IntelliJ, you can also debug your application using its built-in debugger.
+In Flutter, [`Dart Observatory`](https://dart-lang.github.io/observatory/) is used which is a tool for debugging. If you have started your application using `flutter run`, you can open the Web page at the Observatory URL printed to the console (e.g., `http://127.0.0.1:8100/`). If you are using an IDE, you can also debug your application using its built-in debugger.
 The Observatory also supports profiling, examining the heap, observing executed lines of code, debugging memory leaks and memory fragmentation, etc. For more information, see [Observatory’s documentation](https://dart-lang.github.io/observatory/).
 
 **Note:** You can check [here](https://flutter.io/debugging/) for more details on debugging in Flutter.
