@@ -213,7 +213,9 @@ main() async {
 ```
 This code simply receives each event of a stream of integer events, adds them up, and returns (a future of) the sum. When the loop body ends, the function is paused until the next event arrives or the stream is done.
 
-**Note:** Check [here](https://www.dartlang.org/tutorials/language/streams) for more details on Streams. You can refer [here](https://www.dartlang.org/resources/synonyms) for more differences.
+**Note:** Check [here](https://www.dartlang.org/tutorials/language/streams) for more details on Streams. 
+
+You can refer [here](https://www.dartlang.org/resources/synonyms) for more differences.
 
 ## Learn The Basics of Flutter
 ### How do I create a Flutter app?
@@ -245,7 +247,7 @@ import 'package:flutter/material.dart';
 Let’s have a look at the respective codes for `Hello World` :
 ```javascript
 // React Native
-export default class App extends React.Component {
+export default class HelloWorldApp extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -257,7 +259,7 @@ export default class App extends React.Component {
 ```
 ```dart
 //Flutter
-class MyApp extends StatelessWidget {
+class HelloWorldApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -277,7 +279,7 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
-The `App` class in React Native extends `React.Component` and implements the render method by returning a view component as shown.
+The `HelloWorldApp` class in React Native extends `React.Component` and implements the render method by returning a view component as shown.
 In Flutter, the execution starts off with the `main()` function. Alternatively, you don't have to use the MaterialApp, you can use the `textDirection` parameter of the [`Text`](https://docs.flutter.io/flutter/widgets/Text-class.html) widget.
 ### How do I use Widgets and nest them to form a Widget tree?
 When writing an app, you will commonly author new widgets that are subclasses of either [StatelessWidget](https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html) or [StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html), depending on whether your widget manages any state. In the above Hello World example, MyApp class extends a StatelessWidget and overrides a build function which describes the widget in terms of other, lower-level widgets.
@@ -290,7 +292,7 @@ In the above example, the widget tree consists of five widgets,the [MaterialApp]
 |<img src="./hello-world/flutterhelloworld/screenshots/android.png" width="300">|<img src="./hello-world/flutterhelloworld/screenshots/iOS.png" width="300">|
 
 
-**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/hello-world/rnhelloworld) code.
+**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/flutterhelloworld/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/hello-world/rnhelloworld/App.js) code.
 
 ### How do I create reusable components and use them?
 In React Native, you would create a separate class for a reusable component and use that class as a component. You would then use props to access the passed variables and functions. In the example, we created a custom card class and used it inside parent class.
@@ -317,9 +319,11 @@ Alternatively, you can also create and call a function that returns the widget.
 ```dart
 // Flutter
 class CustomCard extends StatelessWidget {
-  CustomCard({this.index, this.onPress});
+  CustomCard({@required this.index, @required this.onPress});
+  
   final index;
   final Function onPress;
+  
   @override
   Widget build(BuildContext context) {
   return new Card(
@@ -429,13 +433,19 @@ In Flutter, you cannot install packages from the command-line like in React Nati
 To install a package in flutter follow these steps:
 
 * Add package name and version to your package's `pubspec.yaml` dependencies.
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  {package_name}: {version} 
+```
 * Install package from the command line by running `flutter packages get`.
 * Import the package into your code.
 
 You can find the Flutter packages [here](https://pub.dartlang.org/flutter/packages) and compare them based on their scores.
 
 ## Built-In Widgets
-Flutter widgets are built using a modern react-style framework. The central idea is that you build your UI out of widgets. Widgets describe what their view should look like given their current configuration and state.
+Flutter widgets are built using a modern react-style framework which takes inspiration from React Native. The central idea is that you build your UI out of widgets. Widgets describe what their view should look like given their current configuration and state.
 
 ### Views
 ### What is the equivalent of a `View` in Flutter?
@@ -485,6 +495,7 @@ handleCanvas = canvas => {
   ctx.fillRect(150, 100, 300, 300);
   ctx.stroke();
 };
+
 render() {
   return (
     <View>
@@ -497,6 +508,7 @@ In Flutter, we use [`CustomPaint`](https://docs.flutter.io/flutter/widgets/Custo
 ```dart
 // Flutter
 class MyCanvasPainter extends CustomPainter {
+
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = new Paint();
@@ -507,10 +519,12 @@ class MyCanvasPainter extends CustomPainter {
     Rect rect = new Rect.fromPoints(new Offset(150.0, 300.0), new Offset(300.0, 400.0));
     canvas.drawRect(rect, paintRect);
   }
+  
   bool shouldRepaint(Sky oldDelegate) => false;
   bool shouldRebuildSemantics(Sky oldDelegate) => false;
 }
 class _MyCanvasState extends State<MyCanvas> {
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -527,7 +541,7 @@ class _MyCanvasState extends State<MyCanvas> {
 |<img src="./canvas/fluttercanvas/screenshots/android.png" width="300">|<img src="./canvas/fluttercanvas/screenshots/iOS.png" width="300">|
 
 
-**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/flutterscrollable/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/scrollable/rnscrollable/App.js) code.
+**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/canvas/fluttercanvas/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/canvas/rncanvas/App.js) code.
 
 ### Layouts
 ### How do I layout my Widgets?
@@ -582,7 +596,7 @@ In React Native, you would specify it as a prop. `flexDirection: “row”` . Bu
 |<img src="./Layout_sample/basiclayout_sample/screenshots/android.gif" width="300">|<img src="./Layout_sample/basiclayout_sample/screenshots/iOS.gif" width="300">|
 
 
-**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/flutter-basic-layout-code/basiclayout_sample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Layout_sample/rn-simple-layout) code.
+**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Layout_sample/basiclayout_sample/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Layout_sample/rnlayout/App.js) code.
 
 ### How do I overlap several widgets on top of one another?
 In React Native, we can overlap several components by using `absolute` positioning. In Flutter, we use [`Stack`](https://docs.flutter.io/flutter/widgets/Stack-class.html) to arrange widgets on top of a base widget. The widgets can entirely or partially overlap the base widget.
@@ -662,9 +676,9 @@ new Center(
 **Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/flutterstyling/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/rnstyling/App.js) code.
 
 ### How to use `Icons` and `Colors` in Flutter?
-There is no inbuilt support for icons in React Native, so third party libraries have to be used. Flutter has inbuilt support for material icons and to use them [`Icons`](https://docs.flutter.io/flutter/material/Icons-class.html) class is used. 
+There is no inbuilt support for icons in React Native, so third party libraries have to be used. Flutter has inbuilt support for Material icons as well as Cupertino (iOS-like) icons. To use Material icons, [`Icons`](https://docs.flutter.io/flutter/material/Icons-class.html) class is used. To use [`Cupertino icons`](https://docs.flutter.io/flutter/cupertino/CupertinoIcons-class.html), make sure you add a dependency on cupertino_icons in your project's pubspec.yaml file.
 
-You can get the list of all icons [here](https://docs.flutter.io/flutter/material/Icons-class.html#constants).
+You can get the list of all Material icons [here](https://docs.flutter.io/flutter/material/Icons-class.html#constants).
 
 For Colors, [`Colors`](https://docs.flutter.io/flutter/material/Colors-class.html) class is used which uses Material design's [color palette](https://material.io/guidelines/style/color.html).
 ```dart
@@ -672,9 +686,10 @@ new Icon(Icons.lightbulb_outline, color: Colors.redAccent)
 ```
 ### How to add style themes in Flutter?
 In React Native, we define common themes for components in stylesheets and use it in components.
-Similarly, we can add uniform styling for almost everything by defining it in [`themeData`](https://docs.flutter.io/flutter/material/ThemeData-class.html) class and passing it to theme property in [`MaterialApp`](https://docs.flutter.io/flutter/material/MaterialApp-class.html) that wraps all the widgets and acts as the root widget of the app.
+Similarly, we can add uniform styling for almost everything by defining it in the [`ThemeData`](https://docs.flutter.io/flutter/material/ThemeData-class.html) class and passing it to the theme property in [`MaterialApp`](https://docs.flutter.io/flutter/material/MaterialApp-class.html) that wraps all the widgets and acts as the root widget of the app.
 ```dart
-class MyApp extends StatelessWidget {
+class StylingApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -682,7 +697,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.cyan,
         brightness: Brightness.dark,
       ),
-      home: new MyHomePage(),
+      home: new StylingPage(),
     );
   }
 }
@@ -693,81 +708,106 @@ In React Native, we do not have state-specific components, you can call `setStat
 ```javascript
 // React Native
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = { blink: true };
   }
+  
   toggleBlinkState() {
     this.setState({blink: !this.state.blink});
   }
       ...
 }
 ```
+#### Stateless Widget
 A widget which has no internal state to manage is a Stateless widget. [Icons](https://docs.flutter.io/flutter/material/Icons-class.html), [IconButton](https://docs.flutter.io/flutter/material/IconButton-class.html), and [Text](https://docs.flutter.io/flutter/widgets/Text-class.html) are examples of stateless widgets, which subclass [StatelessWidget](https://docs.flutter.io/flutter/widgets/StatelessWidget-class.html).
 Stateless widgets are useful when the part of the user interface you are describing does not depend on anything other than the configuration information in the object itself and the [`BuildContext`](https://docs.flutter.io/flutter/widgets/BuildContext-class.html) in which the widget is inflated.
 ```dart
 // Flutter
-class MyApp extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+void main() => runApp(new MyStatelessWidget(text: "StatelessWidget Example to show immutable data"));
+
+class MyStatelessWidget extends StatelessWidget {
+  final String text;
+  MyStatelessWidget({Key key, this.text}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new MyHomePage(),
+    return new Center(
+      child: new Text(
+              text,
+              textDirection: TextDirection.ltr,
+      ),
     );
   }
 }
 ```
+In the above example,you will use the constructor of the MyStatelessWidget class to pass the `text` which is marked as final and since this class extends StatelessWidget it can have immutable data.
+
 The build method of a stateless widget is typically only called in three situations:
 * When the widget is inserted into the tree
 * When the widget's parent changes its configuration
 * When an [`InheritedWidget`](https://docs.flutter.io/flutter/widgets/InheritedWidget-class.html) it depends on changes.
+ 
+#### Stateful Widget
 
-A `MyHomePage` stateful widget can be given as the child to a Stateless widget as shown above.
+A Stateful widget is a widget that has mutable state. A State is information that can be read synchronously when the widget is built and might change during the lifetime of the widget. It is the responsibility of the widget implementer to ensure that the State is promptly notified when such state changes, `StatefulWidget` is useful when the part of the user interface you are describing can change dynamically. The state of the widget changes when a user interacts with a Stateful widget (by typing into a form, or moving a slider, for example), or  when it changes over time (perhaps a data feed causes the UI to update). [Checkbox](https://docs.flutter.io/flutter/material/Checkbox-class.html), [Radio](https://docs.flutter.io/flutter/material/Radio-class.html), [Slider](https://docs.flutter.io/flutter/material/Slider-class.html), [InkWell](https://docs.flutter.io/flutter/material/InkWell-class.html), [Form](https://docs.flutter.io/flutter/widgets/Form-class.html), and [TextField](https://docs.flutter.io/flutter/material/TextField-class.html) are examples of stateful widgets, which subclass [StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html).
 
-A Stateful widget is dynamic. The user can interact with a Stateful widget (by typing into a form, or moving a slider, for example), or it changes over time (perhaps a data feed causes the UI to update). [Checkbox](https://docs.flutter.io/flutter/material/Checkbox-class.html), [Radio](https://docs.flutter.io/flutter/material/Radio-class.html), [Slider](https://docs.flutter.io/flutter/material/Slider-class.html), [InkWell](https://docs.flutter.io/flutter/material/InkWell-class.html), [Form](https://docs.flutter.io/flutter/widgets/Form-class.html), and [TextField](https://docs.flutter.io/flutter/material/TextField-class.html) are examples of stateful widgets, which subclass [StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html).
-A State is information that can be read synchronously when the widget is built and might change during the lifetime of the widget. It is the responsibility of the widget implementer to ensure that the State is promptly notified when such state changes, `Stateful` widget is useful when the part of the user interface you are describing can change dynamically.
 
-The code snippet below shows how to define a stateful widget and use `createState` to create a state of the MyHomePage widget.
+The code snippet below shows how to define a stateful widget and use `createState` to create a state of the `MyStatefulWidget` widget.
 ```dart
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyStatefulWidget extends StatefulWidget {
+  MyStatefulWidget({Key key, this.title}) : super(key: key);
   final String title;
+  
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyStatefulWidgetState createState() => new _MyStatefulWidgetState();
 }
 ```
-The below code snippet shows how the state implements the build function and also how `setState` function is used to rebuild (recall the build function of the stateful `_MyHomePageState` widget).
+The below code snippet shows how the state implements the build function and also how `setState` function is used to rebuild (recall the build function of the stateful `_MyStatefulWidgetState` widget).
 ```dart
-class _MyHomePageState extends State<MyHomePage> {
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   bool showtext=true;
   bool toggleState=true;
   Timer t2;
+  
   void toggleBlinkState(){
-    setState((){ toggleState=!toggleState;});
+    setState((){ 
+      toggleState=!toggleState;
+    });
     if(toggleState==false) {
       toggleShowText();
     } else {
       t2.cancel();
     }
   }
+  
   void toggleShowText(){
     setState((){
       showtext=!showtext;
     });
 	}
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
         child: new Column(
           children: <Widget>[
-            (showtext?( new Text('This execution will be done before you can blink.'))
-              :
-            (new Container())),
+            (showtext
+              ?(new Text('This execution will be done before you can blink.'))
+              :(new Container())
+            ),
             new Padding(
               padding: new EdgeInsets.only(top: 70.0),
               child: new RaisedButton(
                 onPressed: toggleBlinkState,
-                child: (toggleState?( new Text("Blink")) : (new Text("Stop Blinking")))
+                child: (toggleState
+                  ?( new Text("Blink")) 
+                  :(new Text("Stop Blinking"))
+                )
               )
             )
           ],
@@ -778,41 +818,46 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 ### What are some of the best practices while using Stateful and Stateless widgets?
-#### • Figure out which widget must be Stateful and Stateless?
+#### Step 1: Figure out which widget must be Stateful and Stateless?
 Some widgets are Stateful, and some are Stateless.
 If a widget changes—the user interacts with it, it’s Stateful; otherwise it can be Stateless.
 Stateful widgets are useful when the part of the user interface you are describing can change dynamically.
-#### • If using Stateful widget, decide which object manages the widget’s state
+#### Step 2: If using Stateful widget, decide which object manages the widget’s state
 There are three main ways to manage state:
 * The widget manages its own state.
 * The parent manages the widget’s state.
 * A mix-and-match approach
   
-#### • How do you decide which approach to use? The following principles should help you decide:
-* If the state in question is user data: The checked or unchecked mode of a checkbox, or the position of a slider, then the state is best managed by the parent widget.
-* If the state in question is aesthetic: then the widget itself best manages the state.
+##### How do you decide which approach to use? The following principles should help you decide:
+* If the state in question is user data,for example the checked or unchecked mode of a checkbox, or the position of a slider, then the state is best managed by the parent widget.
+* If the state in question is aesthetic,for example an animation, then the widget itself best manages the state.
 * When in doubt, let the parent widget manage the child widget's state.
-* Subclass StatefulWidget and State
-  The `MyHomePage` class manages its own state, so it overrides `createState()` to create the State object. The framework calls `createState()` when it wants to build the widget. In this example, `createState()` creates an instance of `_MyHomePageState` , which is implemented in the next step.
+
+#### Step 3: Subclass StatefulWidget and State
+  The `MyStatefulWidget` class manages its own state, so it overrides `createState()` to create the State object. The framework calls `createState()` when it wants to build the widget. In this example, `createState()` creates an instance of `_MyStatefulWidgetState` , which is implemented in the next step.
 ```dart
-class MyHomePage extends StatefulWidget {
+class MyStatefulWidget extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
-	@override
-  _MyHomePageState createState() => new _MyHomePageState();
+  
+  @override
+  _MyStatefulWidgetState createState() => new _MyStatefulWidgetState();
 }
-class _MyHomePageState extends State<MyHomePage> {
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  
   @override
   Widget build(BuildContext context) {
     ...
   }
 }
 ```
-#### • Plug the stateful widget into the widget tree
+#### Step 4: Plug the stateful widget into the widget tree
 Add your custom stateful widget to the widget tree in the app’s build method.
 ```dart
-class MyApp extends StatelessWidget {
+class MyStatelessWidget extends StatelessWidget {
   // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -820,7 +865,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'State Change Demo'),
+      home: new MyStatefulWidget(title: 'State Change Demo'),
     );
   }
 }
@@ -832,13 +877,14 @@ class MyApp extends StatelessWidget {
 |<img src="./State_sample/flutter_basic_statesample/screenshots/android.gif" width="300">|<img src="./State_sample/flutter_basic_statesample/screenshots/iOS.gif" width="300">|
 
 
-**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/flutter_basic_statesample) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/State_sample/reactnative-state-sample) code.
+**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/State_sample/flutter_basic_statesample/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/State_sample/reactnative-state-sample/App.js) code.
 
 ### Props
 In React Native, most components can be customized when they are created with different parameters. These creation parameters are called props. These parameters can be used in child component using `this.props`.
 ```javascript
 // React Native
 class CustomCard extends React.Component {
+  
   render() {
     return (
       <View>
@@ -852,9 +898,11 @@ class CustomCard extends React.Component {
   }
 }
 class App extends React.Component {
+  
   onPress = index => {
     console.log("Card ", index);
   };
+  
   render() {
     return (
       <View>
@@ -873,9 +921,11 @@ In Flutter, you would just assign a local variable or function marked `final` wi
 ```dart
 // Flutter
 class CustomCard extends StatelessWidget {
-  CustomCard({this.index, this.onPress});
+
+  CustomCard({@required this.index, @required this.onPress});
   final index;
   final Function onPress;
+  
   @override
   Widget build(BuildContext context) {
   return new Card(
@@ -969,7 +1019,7 @@ A `Navigator` is defined as a widget that manages a set of child widgets with a 
 Initially, the definition of the routes is provided as a parameter(routes) to the [`MaterialApp`](https://docs.flutter.io/flutter/material/MaterialApp-class.html) widget. A code snippet from our example is as follows :
 ```dart
 // Flutter
-class MyApp extends StatelessWidget {
+class NavigationApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -988,6 +1038,12 @@ To navigate to named route :
 ```dart
 Navigator.of(context).pushNamed('/a');
 ```
+One can also use the push method of Navigator which adds the given route to the history of the navigator that most tightly encloses the given context, and transitions to it.
+```dart
+Navigator.push(context,{route});
+```
+
+
 ### How do I use Tab Navigation and Drawer Navigation in Flutter?
 In React Native, we define a Tab and Drawer navigators and use them in class to show tabs and drawers and navigate.
 In Flutter, we use [`drawer`](https://docs.flutter.io/flutter/material/Drawer-class.html) and [`bottomNavigationBar`](https://docs.flutter.io/flutter/material/TabBar-class.html) parameters of the [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) to achieve the same.
@@ -1018,10 +1074,9 @@ bottomNavigationBar: new Material (
 ```
 Also, a [`TabController`](https://docs.flutter.io/flutter/material/TabController-class.html) must be passed. A TabController coordinates tab selection between a [`TabBar`](https://docs.flutter.io/flutter/material/TabBar-class.html) and a [`TabBarView`](https://docs.flutter.io/flutter/material/TabBarView-class.html).
 The `length` parameter of the `TabController` is the total number of tabs. Typically greater than one.
-`vsync` is the [`TickerProvider`](https://docs.flutter.io/flutter/scheduler/TickerProvider-class.html) that can be used. `TickerProvider` is an interface implemented by classes that can vend [`Ticker`](https://docs.flutter.io/flutter/scheduler/Ticker-class.html) objects.
-You can use the [`TickerProviderStateMixin`](https://docs.flutter.io/flutter/widgets/TickerProviderStateMixin-class.html) and [`SingleTickerProviderStateMixin`](https://docs.flutter.io/flutter/widgets/SingleTickerProviderStateMixin-class.html) classes to obtain a suitable TickerProvider.
+`vsync` is the [`TickerProvider`](https://docs.flutter.io/flutter/scheduler/TickerProvider-class.html) that can be used. `TickerProvider` is an interface implemented by classes that can vend [`Ticker`](https://docs.flutter.io/flutter/scheduler/Ticker-class.html) objects. Tickers can be used by any object that wants to be notified whenever a frame triggers, but are most commonly used indirectly via an [`AnimationController`](https://docs.flutter.io/flutter/animation/AnimationController-class.html). `AnimationControllers` need a `TickerProvider` to obtain their `Ticker`. If you are creating an AnimationController from a State, then you can use the [`TickerProviderStateMixin`](https://docs.flutter.io/flutter/widgets/TickerProviderStateMixin-class.html) or [`SingleTickerProviderStateMixin`](https://docs.flutter.io/flutter/widgets/SingleTickerProviderStateMixin-class.html) classes to obtain a suitable `TickerProvider`.
 
-TabBarView widget is passed as the `body` parameter of the [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget. All the screens corresponding to the `TabBar` widget’s tabs are given as the children to `TabBarView` widget along with the same `TabController` as shown :
+`TabBarView` widget is passed as the `body` parameter of the [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget. All the screens corresponding to the `TabBar` widget’s tabs are given as the children to `TabBarView` widget along with the same `TabController` as shown :
 ```dart
 body: new TabBarView(
   children: <Widget> [
@@ -1063,7 +1118,7 @@ drawer: new Drawer(
 |:---:|:--:|
 |<img src="./Navigation_example/flutternavigation/screenshots/android.gif" width="300">|<img src="./Navigation_example/flutternavigation/screenshots/iOS.gif" width="300">|
 
-**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/flutter_navigation) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/Navigation_example/reactnative-navigation-example) code.
+**Note:** You can check the working code for [Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Navigation_example/flutternavigation/lib/main.dart) and its equivalent [React Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Navigation_example/reactnative-navigation-example/App.js) code.
 ## Gesture Detection and Touch Event Handling
 ### How do I add an click/press listeners to a widget in Flutter?
 In React Native, we can add various listeners to components using `Touchables` component or use `PanResponder`.
@@ -1084,6 +1139,7 @@ For more complex gestures and combining several touches into a single gesture, w
 ```javascript
 // React Native
 class App extends Component {
+
   componentWillMount() {
     this._panResponder = PanResponder.create({
       onMoveShouldSetPanResponder: (event, gestureState) =>
@@ -1095,6 +1151,7 @@ class App extends Component {
       onPanResponderTerminationRequest: (event, gestureState) => true
     });
   }
+  
   render() {
     return (
       <View style={styles.container} {...this._panResponder.panHandlers}>
@@ -1106,7 +1163,7 @@ class App extends Component {
   }
 }
 ```
-In Flutter, one way to achieve this is using buttons or touchable widgets which have `onPress` parameters. Another way is by wrapping widgets in [`GestureDetector`](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html) widget which can add event detection to any widget by just passing the function in the respective callback.
+In Flutter, one way to achieve this is using buttons or touchable widgets which have `onPress` parameters. Another way is by wrapping widgets in a [`GestureDetector`](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html) widget which can add event detection to any widget by just passing the function in the respective callback.
 ```dart
 // Flutter
 new GestureDetector(
@@ -1120,7 +1177,8 @@ new GestureDetector(
         children: <Widget>[
           new Text('Tap, Long Press, Swipe Horizontally or Vertically '),
         ],
-    )),
+      )
+    ),
   ),
   onTap: () {
     print('Tapped');
@@ -1225,7 +1283,12 @@ new RaisedButton(
 In Flutter, we use [`Form`](https://docs.flutter.io/flutter/widgets/Form-class.html) widget, where [`TextFormField`](https://docs.flutter.io/flutter/material/TextFormField-class.html) widgets along with the submit button are passed as children. The `TextFormField` widget has a parameter called [`onSaved`](https://docs.flutter.io/flutter/widgets/FormField/onSaved.html) which takes a callback and executes when the form is saved.
 The process is to call methods on FormState to save, reset, or validate each FormField that is a descendant of this Form. To obtain the `FormState`, you may use `Form.of` with a context whose ancestor is the Form, or pass a `GlobalKey` to the Form constructor and call `GlobalKey.currentState`.
 ```dart
+final formKey = new GlobalKey<FormState>();
+
+...
+
 new Form(
+  key:formKey,
   child: new Column(
     children: <Widget>[
       new TextFormField(
@@ -1243,6 +1306,22 @@ new Form(
     ],
   ),
 )
+```
+The process is to call methods on FormState to save, reset, or validate each FormField that is a descendant of this Form. To obtain the `FormState`, you may use `Form.of` with a context whose ancestor is the Form, or pass a `GlobalKey` to the Form constructor and call `GlobalKey.currentState`. The below code snippet shows how `Form.save()` and `formKey` which is a `GlobalKey` used to save the form on submit. 
+```dart
+void _submit() {
+  final form = formKey.currentState;
+  if (form.validate()) {
+    form.save();
+    showDialog(
+      context: context,
+      child: new AlertDialog(
+        title: new Text('Alert'),
+        content: new Text('Email: $_email, password: $_password'),
+      )
+    );
+  }
+}
 ```
 
 ##### Preview
@@ -1337,38 +1416,43 @@ class FadeInView extends React.Component {
 </FadeInView>
     ...
 ```
-In the equivalent Flutter example, we use [`AnimationController`](https://docs.flutter.io/flutter/animation/AnimationController-class.html) object `controller` and describe duration inside it. We also use Animation object `animation` where we define it as [`CurvedAnimation`](https://docs.flutter.io/flutter/animation/Curves-class.html) which basically describes the animation’s progress as a non-linear curve. We are using this animation inside `FadeInView` widget where we have [`Opacity`](https://docs.flutter.io/flutter/widgets/Opacity-class.html) as separate styling widget inside which we map the current interpolated opacity to a widget. Similar to React Native, we define initial and final state, but here we use [`Tween`](https://flutter.io/tutorials/animation/#tween) class for it. The sole job of a Tween is to define a mapping from an input range to an output range. Then we start the animation using `controller.forward()`. We can perform other operations too using the controller.
+In the equivalent Flutter example, we use [`AnimationController`](https://docs.flutter.io/flutter/animation/AnimationController-class.html) object `controller` and describe duration inside it. We also use Animation object `animation` where we define it as [`Tween`](https://docs.flutter.io/flutter/animation/Tween-class.html) which basically describes a linear interpolation between a beginning and ending value and animate. We are using [`FadeTransition`](https://docs.flutter.io/flutter/widgets/FadeTransition-class.html) widget where we have `opacity` property which is mapped to the `animation` object. The sole job of a Tween is to define a mapping from an input range to an output range. Then we start the animation using `controller.forward()`. We can perform other operations too using the controller. In the example, We are using the [`FlutterLogo`](https://docs.flutter.io/flutter/material/FlutterLogo-class.html) inside the `FadeTransition` widget.
+
 ```dart
 //Flutter
-class FadeInView extends AnimatedWidget {
-  static final _opacityTween = new Tween<double>(begin: 0.0, end: 1.0);
-  FadeInView({Key key, Animation<double> animation}) : super(key: key, listenable: animation);
-  Widget build(BuildContext context) {
-    final Animation<double> animation = listenable;
-    return new Material(
-      child: new Opacity(
-        opacity: _opacityTween.evaluate(animation),
-        child: new Text("Fading in",
-          textDirection: TextDirection.ltr,
-          style: new TextStyle(fontSize: 28.0)
-        ),
-      ),
-    );
-  }
+void main() {
+  runApp(new Center(child: new LogoFade()));
 }
-class _AppState extends State<App> with SingleTickerProviderStateMixin {
+
+class LogoFade extends StatefulWidget {
+  _LogoFadeState createState() => new _LogoFadeState();
+}
+
+class _LogoFadeState extends State<LogoFade> with TickerProviderStateMixin {
+  Animation animation;
   AnimationController controller;
-  Animation<double> animation;
+
   initState() {
     super.initState();
     controller = new AnimationController(
-      duration: const Duration(milliseconds: 5000), vsync: this);
-    animation = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
+        duration: const Duration(milliseconds: 3000), vsync: this);
+    final CurvedAnimation curve =
+        new CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    animation = new Tween(begin: 0.0, end: 1.0).animate(curve);
     controller.forward();
   }
+
   Widget build(BuildContext context) {
-    return new FadeInView(animation: animation);
+    return new FadeTransition(
+      opacity: animation,
+      child: new Container(
+        height: 300.0,
+        width: 300.0,
+        child: new FlutterLogo(),
+      ),
+    );
   }
+
   dispose() {
     controller.dispose();
     super.dispose();
@@ -1404,7 +1488,7 @@ child: new Dismissible(
 |:---:|:--:|
 |<img src="./animations/fluttercardswipe/screenshots/android.gif" width="300">|<img src="./animations/fluttercardswipe/screenshots/iOS.gif" width="300">|
 
-**Note:** You can check the working code [here](https://github.com/GeekyAnts/flutter-docs-code-samples/tree/master/animations/fluttercardswipe).
+**Note:** You can check the working code [here](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/fluttercardswipe/lib/main.dart).
 
 ## CheatSheet
 
