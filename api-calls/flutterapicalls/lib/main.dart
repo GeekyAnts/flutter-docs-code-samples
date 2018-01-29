@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart';
 
 void main() {
   runApp(new MyApp());
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final httpClient = createHttpClient();
   final url = 'https://httpbin.org/ip';
   _getIPAddressUsingFuture() {
-    Future response = httpClient.get(url);
+    Future<Response> response = httpClient.get(url);
     response.then((value) {
       setState(() {
         _ipAddress = JSON.decode(value.body)['origin'];

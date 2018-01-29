@@ -7,13 +7,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         home: new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Flutter"),
-      ),
-      body: new Center(
-        child: new Text(
-          'Hello World',
-        ),
+      body: new Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Center(
+            child: new Text(
+              'Hello World',
+            ),
+          ),
+        ],
       ),
     ));
   }
