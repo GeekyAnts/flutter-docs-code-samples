@@ -2,26 +2,29 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new MyStatelessWidget(title: "StatelessWidget Example"));
 
-class MyApp extends StatelessWidget {
+class MyStatelessWidget extends StatelessWidget {
+  final String title;
+  MyStatelessWidget({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(title: 'State Change Demo'),
+      home: new MyStatefulWidget(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyStatefulWidget extends StatefulWidget {
+  MyStatefulWidget({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyStatefulWidgetState createState() => new _MyStatefulWidgetState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   bool showtext = true;
   bool toggleState = true;
   Timer t2;
@@ -61,14 +64,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? (new Text(
                     'I love blinking.',
                   ))
-                : (new Container())),
+                : (new Container())
+            ),
             new Padding(
                 padding: new EdgeInsets.only(top: 70.0),
                 child: new RaisedButton(
                     onPressed: toggleBlinkState,
                     child: (toggleState
                         ? (new Text("Blink"))
-                        : (new Text("Stop Blinking")))))
+                        : (new Text("Stop Blinking"))
+                    )
+                )
+            )
           ],
         ),
       ),
