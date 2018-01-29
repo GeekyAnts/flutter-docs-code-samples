@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new ScrollableApp());
 
-class MyApp extends StatelessWidget {
+class ScrollableApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new ScrollablePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class ScrollablePage extends StatefulWidget {
+  ScrollablePage({Key key}) : super(key: key);
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _ScrollablePageState createState() => new _ScrollablePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ScrollablePageState extends State<ScrollablePage> {
   var data = [
     'Devin',
     'Jackson',

@@ -1,25 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new ModularApp());
 
-class MyApp extends StatelessWidget {
+class ModularApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new ModularHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class ModularHomePage extends StatefulWidget {
+  ModularHomePage({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _ModularHomePageState createState() => new _ModularHomePageState();
 }
 
 class CustomCard extends StatelessWidget {
-  CustomCard({this.index, this.onPress});
+  CustomCard({@required this.index, @required this.onPress});
   final index;
   final Function onPress;
   @override
@@ -51,7 +52,7 @@ class CustomCard extends StatelessWidget {
   }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ModularHomePageState extends State<ModularHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new LayoutApp());
 
-class MyApp extends StatelessWidget {
+class LayoutApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new LayoutPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class LayoutPage extends StatefulWidget {
+  LayoutPage({Key key}) : super(key: key);
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _LayoutPageState createState() => new _LayoutPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LayoutPageState extends State<LayoutPage> {
   MainAxisAlignment mainaxis = MainAxisAlignment.center;
   bool newCenter = false;
   void changeToSpaceBetween() {

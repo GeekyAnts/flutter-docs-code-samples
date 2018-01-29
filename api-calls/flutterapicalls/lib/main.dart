@@ -5,26 +5,26 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 
 void main() {
-  runApp(new MyApp());
+  runApp(new APICalls());
 }
 
-class MyApp extends StatelessWidget {
+class APICalls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new MyAPICalls(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class MyAPICalls extends StatefulWidget {
+  MyAPICalls({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyAPICallsState createState() => new _MyAPICallsState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyAPICallsState extends State<MyAPICalls> {
   var _ipAddress = 'Unknown';
   final httpClient = createHttpClient();
   final url = 'https://httpbin.org/ip';

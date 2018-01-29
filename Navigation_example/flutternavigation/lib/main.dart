@@ -5,13 +5,13 @@ import './HomeScreen.dart' as Home;
 import './TabScreen.dart' as TabScreen;
 import './UsualNavScreen.dart' as UsualNavScreen;
 
-void main() => runApp(new MyApp());
+void main() => runApp(new NavigationApp());
 
-class MyApp extends StatelessWidget {
+class NavigationApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        home: new MyHomePage(),
+        home: new NavigationHomePage(),
         routes: <String, WidgetBuilder>{
           '/a': (BuildContext context) => new UsualNavScreen.UsualNavScreen(),
           '/b': (BuildContext context) => new DrawerScreen.DrawerNavScreen(),
@@ -19,13 +19,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class NavigationHomePage extends StatefulWidget {
+  NavigationHomePage({Key key}) : super(key: key);
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _NavigationHomePageState createState() => new _NavigationHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _NavigationHomePageState extends State<NavigationHomePage>
     with SingleTickerProviderStateMixin {
   TabController controller;
 

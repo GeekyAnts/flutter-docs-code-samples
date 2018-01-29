@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new LocalStorageApp());
 
 SharedPreferences prefs;
 
-class MyApp extends StatelessWidget {
+class LocalStorageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new LocalStoragePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class LocalStoragePage extends StatefulWidget {
+  LocalStoragePage({Key key}) : super(key: key);
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _LocalStoragePageState createState() => new _LocalStoragePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LocalStoragePageState extends State<LocalStoragePage> {
   int _counter;
   @override
   initState() async {

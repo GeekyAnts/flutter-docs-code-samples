@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new GesturesApp());
 
-class MyApp extends StatelessWidget {
+class GesturesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new GesturesHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class GesturesHomePage extends StatefulWidget {
+  GesturesHomePage({Key key}) : super(key: key);
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _GesturesHomePageState createState() => new _GesturesHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _GesturesHomePageState extends State<GesturesHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {

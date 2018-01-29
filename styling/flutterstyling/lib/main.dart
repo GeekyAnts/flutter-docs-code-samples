@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new StylingApp());
 
-class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
+class StylingApp extends StatelessWidget {
   @override
-  _MyAppState createState() => new _MyAppState();
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      home: new StylingPage(),
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
+class StylingPage extends StatefulWidget {
+  StylingPage({Key key}) : super(key: key);
+  @override
+  _StylingPageState createState() => new _StylingPageState();
+}
+
+class _StylingPageState extends State<StylingPage> {
   Brightness brightness = Brightness.light;
   var buttonText = "Dark Theme";
   changeTheme() {

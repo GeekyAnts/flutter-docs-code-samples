@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new CanvasApp());
 
-class MyApp extends StatelessWidget {
+class CanvasApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new CanvasHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class CanvasHomePage extends StatefulWidget {
+  CanvasHomePage({Key key}) : super(key: key);
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _CanvasHomePageState createState() => new _CanvasHomePageState();
 }
 
 class Sky extends CustomPainter {
@@ -34,7 +34,7 @@ class Sky extends CustomPainter {
   bool shouldRebuildSemantics(Sky oldDelegate) => false;
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CanvasHomePageState extends State<CanvasHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

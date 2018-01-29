@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new PlatformApp());
 
-class MyApp extends StatelessWidget {
+class PlatformApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new PlatformPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class PlatformPage extends StatefulWidget {
+  PlatformPage({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _PlatformPageState createState() => new _PlatformPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _PlatformPageState extends State<PlatformPage> {
   String get getPlatform {
     if (Theme.of(context).platform == TargetPlatform.iOS) {
       return "iOS";

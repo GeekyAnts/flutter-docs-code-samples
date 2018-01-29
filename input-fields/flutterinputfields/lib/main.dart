@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new InputApp());
 
-class MyApp extends StatelessWidget {
+class InputApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new MyHomePage(),
+      home: new InputPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class InputPage extends StatefulWidget {
+  InputPage({Key key}) : super(key: key);
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _InputPageState createState() => new _InputPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _InputPageState extends State<InputPage> {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
   final TextEditingController _controller = new TextEditingController();
