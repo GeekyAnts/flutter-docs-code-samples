@@ -20,7 +20,7 @@ class ModularHomePage extends StatefulWidget {
 }
 
 class CustomCard extends StatelessWidget {
-  CustomCard({ this.index,  this.onPress});
+  CustomCard({@required this.index, @required this.onPress});
   final index;
   final Function onPress;
   @override
@@ -67,6 +67,7 @@ class _ModularHomePageState extends State<ModularHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   new CustomCard(
+                    index: index,
                     onPress: () {
                       print('Card $index');
                     },
