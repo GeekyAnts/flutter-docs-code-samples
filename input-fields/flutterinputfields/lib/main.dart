@@ -80,7 +80,7 @@ class _InputPageState extends State<InputPage> {
                     onSaved: (val) => _email = val,
                     decoration: const InputDecoration(
                       icon: const Icon(Icons.person),
-                      hintText: 'Enter you email',
+                      hintText: 'Enter your email',
                       labelText: 'Email',
                     ),
                   ),
