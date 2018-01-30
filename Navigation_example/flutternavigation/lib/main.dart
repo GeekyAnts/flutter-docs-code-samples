@@ -69,5 +69,5 @@ class _NavigationHomePageState extends State<NavigationHomePage>
           children: <Widget>[new Home.HomeScreen(), new TabScreen.TabScreen()],
           controller: controller,
         ));
-  }
+    }
 }
