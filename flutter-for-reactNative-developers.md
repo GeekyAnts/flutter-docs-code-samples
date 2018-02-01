@@ -5,7 +5,6 @@ While React Native uses Javascript, Flutter uses a language called Dart.
 ## A Brief Introduction to Dart for JavaScript Developers
 [Dart](https://www.dartlang.org/) is an open-source, scalable programming language, for building web, server, and mobile apps. It is an object-oriented, single inheritance language that uses a C-style syntax that is AOT-compiled into native and also transcompiles optionally into JavaScript. It supports interfaces, abstract classes and strong mode.
 
-You can play around with the Dart code in the [DartPad](https://dartpad.dartlang.org/).
 ### Entry Point
 While JavaScript doesn't have any specific entry function, Dart (like C) does have an entry function called `main()`.
 ```javascript
@@ -21,6 +20,8 @@ main();
 main() {
 }
 ```
+Try it out in [DartPad](https://dartpad.dartlang.org/0df636e00f348bdec2bc1c8ebc7daeb1).
+
 ### Printing to the console
 Printing data to the console can be done in the following way.
 ```javascript
@@ -31,6 +32,8 @@ console.log("Level completed.");
 // Dart
 print('Hello World');
 ```
+Try it out in [DartPad](https://dartpad.dartlang.org/cf9e652f77636224d3e37d96dcf238e5).
+
 ### Variables
 #### Creating and Assigning Variables
 While JavaScript variables cannot be typed, Dart variables are optionally typed but it is a good practice to use typed variables. In [Dart 2](https://www.dartlang.org/dart-2), types are mandatory. With both static and runtime type checks, it has a sound type system. This type system enables better tooling, as well as earlier feedback when you write code.
@@ -45,6 +48,8 @@ String name = 'dart';
 var otherName = 'Dart'; // Also inferred to be a String in Strong mode.
 // Both are acceptable in Dart.
 ```
+Try it out in [DartPad](https://dartpad.dartlang.org/3f4625c16e05eec396d6046883739612).
+
 #### Default value
 In Dart, uninitialized variables have an initial value of `null`. Even variables with numeric types are initially null because numbers are objects in Dart. But in JavaScript, variables are `undefined`.
 ```javascript
@@ -56,6 +61,9 @@ var name; // == undefined
 var name; // == null
 int x; // == null
 ```
+
+Try it out in [DartPad](https://dartpad.dartlang.org/57ec21faa8b6fe2326ffd74e9781a2c7).
+
 **Note:** Check [here](https://www.dartlang.org/resources/dart-tips/dart-tips-ep-3) for more details on variables.
 
 ### Checking for null/zero
@@ -82,6 +90,9 @@ if (zero == 0) {
   print('use "== 0" to check zero');
 }
 ```
+
+Try it out in [DartPad](https://dartpad.dartlang.org/c85038ad677963cb6dc943eb1a0b72e6).
+
 ### Functions
 For the most part, Dart and JavaScript functions are similar. The only thing that's different in Dart and JavaScript functions is the declaration.
 ```javascript
@@ -100,6 +111,9 @@ bool fn() {
   return true;
 }
 ```
+
+Try it out in [DartPad](https://dartpad.dartlang.org/5454e8bfadf3000179d19b9bc6be9918).
+
 **Note:** Check [here](https://www.dartlang.org/resources/dart-tips/dart-tips-ep-6) for more details on functions.
 
 ### Asynchronous Programming
@@ -133,6 +147,9 @@ _getIPAddress() {
   }).catchError((error) => print(error));
 }
 ```
+
+Try it out in [DartPad](https://dartpad.dartlang.org/b68eb981456c5eec03daa3c05ee59486).
+
 **Note:** Check [here](https://www.dartlang.org/tutorials/language/futures) for more details on future.
 
 #### async / await
@@ -160,6 +177,9 @@ _getIPAddress() async {
   });
 }
 ```
+
+Try it out in [DartPad](https://dartpad.dartlang.org/96e845a844d8f8d91c6f5b826ef38951).
+
 **Note:** Check [here](https://www.dartlang.org/articles/language/await-async) for more details on async/await.
 
 #### Streams
@@ -224,9 +244,11 @@ main() async {
 ```
 This code simply receives each event of a stream of integer events, adds them up, and returns (a future of) the sum. When the loop body ends, the function is paused until the next event arrives or the stream is done.
 
+Try it out in [DartPad](https://dartpad.dartlang.org/e708f2cc5504f405a374537242a579b5).
+
 **Note:** Check [here](https://www.dartlang.org/tutorials/language/streams) for more details on Streams. 
 
-You can refer [here](https://www.dartlang.org/resources/synonyms) for more differences.
+You can refer [here](https://www.dartlang.org/resources/synonyms) for more differences between Javascript and Dart.
 
 ## Learn The Basics of Flutter
 ### How do I create a Flutter app?
@@ -337,6 +359,9 @@ class CustomCard extends React.Component {
 ```
 Similarly, in Flutter you just create a class for custom widgets and use it as you would use a normal widget.
 Alternatively, you can also create and call a function that returns the widget.
+
+Depending on the complexity of the the custom widget/ widget tree, one can make use of inline functions to create and return custom widgets when necessary.
+
 ```dart
 // Flutter
 class CustomCard extends StatelessWidget {
@@ -371,7 +396,8 @@ new CustomCard(
 )
     ...
 ```
-The above shown constructor for the `CustomCard` class is a Dart feature. The curly braces inside the constructor indicates that the parameters are optional when initialising just like functions and method. In order to make these fields required, we have two options- first one is to remove the curly braces from the constructor and the second is to add the `@required` to the constructor. The latter approach enables the developer to provide parameter names when using the `CustomCard` class in the app code as show in the (Usage section) example above. 
+The above shown constructor for the `CustomCard` class is a Dart feature. The curly braces inside the constructor indicates that the parameters are optional when initialising just like functions and method. In order to make these fields required, we have two options- first one is to remove the curly braces from the constructor and the second is to add the `@required` to the constructor. The latter approach enables the developer to provide parameter names when using the `CustomCard` class in the app code as show in the (Usage section) example above.
+
 ##### Preview
 |Android|iOS|
 |:---:|:--:|
@@ -406,7 +432,7 @@ The minimal Flutter app simply calls the `runApp()` function with a widget. The 
 
 <b> `projectname/ios` </b> - file containing iOS native code.
 
-<b> `projectname/lib` </b> - externally accessible Dart source files go here. Other source files can be put into `/lib/src` 
+<b> `projectname/lib` </b> - Dart source files go here.
 
 <b> `projectname/lib/main.dart` </b> - includes the main function which is start of execution. Also this is where you start writing your dart code.
 
