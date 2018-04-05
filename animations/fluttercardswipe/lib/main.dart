@@ -89,7 +89,7 @@ class CardsDemoState extends State<CardsDemo> {
         home: new Scaffold(
             appBar: new AppBar(title: const Text('Card Swipe Animation')),
             body: new Stack(
-                children: cards.map((String card) {
+                children: cards.map((card) {
               return new Container(
                   child: new CustomCardItem(
                 card: card,
